@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ProfileBook.Views.Settings">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_save.png"
+                     Order="Primary"
+                     Priority="0" 
+                     Command="{Binding SaveToolBarCommand}"
+                     />
+    </ContentPage.ToolbarItems>
+
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout RadioButtonGroup.GroupName="SortBy" RadioButtonGroup.SelectedValue="{Binding Selection}">
+            <Label Text="Sort by:"/>
+            <RadioButton Content="Nickname" Value="1"/>
+            <RadioButton Content="Name" Value="2"/>
+            <RadioButton Content="Date" Value="3"/>
+        </StackLayout>
+
+        <Label Text="{Binding Selection}"></Label>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.7*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="Dark theme:" Grid.Column="0"></Label>
+            <CheckBox Grid.Column="1" IsChecked="{Binding IsChecked}"></CheckBox>
+        </Grid>
+        <Label Text="{Binding Theme}"></Label>
+
+    </StackLayout>
+
+
+</ContentPage>
