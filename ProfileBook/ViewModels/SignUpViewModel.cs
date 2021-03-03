@@ -14,7 +14,7 @@ namespace ProfileBook.ViewModels
     {
 
         #region -----Private-----
-        private readonly INavigationService _navigationService;
+
         private readonly IPageDialogService _pageDialogService;
         private readonly IRegistrationService _registrationService;
 
@@ -36,8 +36,6 @@ namespace ProfileBook.ViewModels
         {
             Title = "Users SignUp";
 
-            
-            _navigationService = navigationService;
             _pageDialogService = pageDialogService;
             _registrationService = registrationService;
 
@@ -148,7 +146,7 @@ namespace ProfileBook.ViewModels
                         var p = new NavigationParameters();
                         p.Add("Login", Login);
 
-                        await _navigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}", p);
+                        await NavigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}", p);
                     }
                     break;
                 default:

@@ -20,7 +20,6 @@ namespace ProfileBook.ViewModels
 
         #region -----Private-----
 
-        private readonly INavigationService _navigationService;
         private readonly IPageDialogService _pageDialogService;
         private readonly IAuthorizationService _authorization;
 
@@ -44,8 +43,6 @@ namespace ProfileBook.ViewModels
         {
             Title = "Users SignIn";
 
-
-            _navigationService = navigationService;
             _pageDialogService = pageDialogService;
             _authorization = authorization;
 
@@ -102,7 +99,7 @@ namespace ProfileBook.ViewModels
 
         private async void ExecuteNavigateSignUpCommand()
         {
-            await _navigationService.NavigateAsync($"{nameof(SignUp)}");
+            await NavigationService.NavigateAsync($"{nameof(SignUp)}");
 
         }
 

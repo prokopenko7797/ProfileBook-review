@@ -18,6 +18,8 @@ namespace ProfileBook.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
         
+       
+
 
         private string _title;
 
@@ -26,6 +28,7 @@ namespace ProfileBook.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+
 
 
 
@@ -39,7 +42,6 @@ namespace ProfileBook.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
-
             Resources = new LocalizedResources(typeof(LocalizationResource));
         }
 
@@ -66,13 +68,6 @@ namespace ProfileBook.ViewModels
 
         }
 
-
-        public void OnPropertyChanged([CallerMemberName] string property = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
-        public new event PropertyChangedEventHandler PropertyChanged;
 
     }
 }

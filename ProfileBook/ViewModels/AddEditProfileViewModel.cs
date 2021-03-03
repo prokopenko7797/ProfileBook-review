@@ -26,7 +26,6 @@ namespace ProfileBook.ViewModels
 
         private Profile _profile = new Profile();
 
-        private readonly INavigationService _navigationService;
         private readonly IProfileService _profileService;
         private readonly IMedia _media;
         private readonly IUserDialogs _userDialogs;
@@ -42,7 +41,6 @@ namespace ProfileBook.ViewModels
             : base(navigationService)
         {
             Title = "Add Profile";
-            _navigationService = navigationService;
             _profileService = profileService;
             _userDialogs = userDialogs;
             _media = media;
@@ -112,7 +110,7 @@ namespace ProfileBook.ViewModels
 
                 await _profileService.AddEdit(_profile);
 
-                await _navigationService.GoBackAsync();
+                await NavigationService.GoBackAsync();
             }
 
             else await _userDialogs.AlertAsync("NickName is empty", "Error", "OK");
@@ -137,7 +135,7 @@ namespace ProfileBook.ViewModels
             if (_media.IsTakePhotoSupported)
             {
                 var image = await _media.TakePhotoAsync(new StoreCameraMediaOptions 
-                                                        { Name = $"{DateTime.Now }.jpg", PhotoSize = PhotoSize.Medium });
+                                                        { Name = $"{DateTime.Now }.jpg" });
                 if (image != null)
                 {
                     ImagePath = image.Path;

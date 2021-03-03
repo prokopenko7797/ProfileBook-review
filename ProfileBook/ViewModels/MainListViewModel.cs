@@ -25,7 +25,6 @@ namespace ProfileBook.ViewModels
         #region -----Private-----
 
 
-        private readonly INavigationService _navigationService;
         private readonly IProfileService _profileService;
         private readonly IAuthorizationService _authorizationService;
         
@@ -44,7 +43,7 @@ namespace ProfileBook.ViewModels
             IAuthorizationService authorizationService)
             : base(navigationService)
         {
-            _navigationService = navigationService;
+
             _authorizationService = authorizationService;
             _profileService = profileService;
 
@@ -141,7 +140,7 @@ namespace ProfileBook.ViewModels
             var p = new NavigationParameters();
             p.Add(nameof(Profile), profile);
 
-            await _navigationService.NavigateAsync($"{nameof(AddEditProfile)}", p);
+            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}", p);
         }
 
 
@@ -151,20 +150,20 @@ namespace ProfileBook.ViewModels
 
             var p = new NavigationParameters();
             p.Add(nameof(Profile.image_path), profile.image_path);
-            await _navigationService.NavigateAsync($"{nameof(ProfileImage)}", p, true, true);
+            await NavigationService.NavigateAsync($"{nameof(ProfileImage)}", p, true, true);
         }
 
 
         private async void NavigateAddEditProfileCommand()
         {
-            await _navigationService.NavigateAsync($"{nameof(AddEditProfile)}");
+            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}");
 
         }
 
 
         private async void NavigateSettingsCommand()
         {
-            await _navigationService.NavigateAsync($"{nameof(Settings)}");
+            await NavigationService.NavigateAsync($"{nameof(Settings)}");
             /////////////////////////////////////////////////////////////////
 
         }
@@ -173,7 +172,7 @@ namespace ProfileBook.ViewModels
         private async void NavigateLogOutToolBarCommand() 
         {
             _authorizationService.LogOut();
-            await _navigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}");
+            await NavigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}");
         }
 
         #endregion

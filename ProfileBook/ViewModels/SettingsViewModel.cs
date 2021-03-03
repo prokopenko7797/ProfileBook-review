@@ -20,14 +20,13 @@ namespace ProfileBook.ViewModels
     {
         private readonly ISettingsManager _settingsManager;
         private readonly IUserDialogs _userDialogs;
-        private readonly INavigationService _navigationService;
 
         public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager, IUserDialogs userDialogs)
             : base(navigationService)
         {
             _settingsManager = settingsManager;
             _userDialogs = userDialogs;
-            _navigationService = navigationService;
+
 
 
             Theme = (int)Application.Current.RequestedTheme;
@@ -82,23 +81,22 @@ namespace ProfileBook.ViewModels
 
             if (IsChecked == true)
             {
-                //Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru");
-                //LocalizationResource.Culture = new CultureInfo("ru", false);
-
-
 
                 MessagingCenter.Send<object, CultureChangedMessage>(this,
                string.Empty, new CultureChangedMessage("ru"));
+                //Resources = new LocalizedResources(typeof(LocalizationResource), "ru");
+
 
                 _settingsManager.Theme = (int)OSAppTheme.Dark;
                 Application.Current.UserAppTheme = OSAppTheme.Dark;
             }
             else 
             {
-                //Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                //LocalizationResource.Culture = new CultureInfo("en-US", false);
+
                 MessagingCenter.Send<object, CultureChangedMessage>(this,
                     string.Empty, new CultureChangedMessage("en-US"));
+
+                //Resources = new LocalizedResources(typeof(LocalizationResource), "en-US");
 
                 _settingsManager.Theme = (int)OSAppTheme.Unspecified;
                 Application.Current.UserAppTheme = OSAppTheme.Unspecified;
@@ -106,7 +104,7 @@ namespace ProfileBook.ViewModels
             
             _settingsManager.Lang = Lang;
 
-            await _navigationService.GoBackAsync();
+            await NavigationService.GoBackAsync();
         }
 
         public override void Initialize(INavigationParameters parameters)

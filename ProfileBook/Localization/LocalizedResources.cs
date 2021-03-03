@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProfileBook.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -10,7 +11,7 @@ namespace ProfileBook.Localization
 {
     public class LocalizedResources : INotifyPropertyChanged
     {
-        const string DEFAULT_LANGUAGE = "en-US";
+       
 
         readonly ResourceManager ResourceManager;
         CultureInfo CurrentCultureInfo;
@@ -24,7 +25,7 @@ namespace ProfileBook.Localization
         }
 
         public LocalizedResources(Type resource, string language = null)
-            : this(resource, new CultureInfo(language ?? DEFAULT_LANGUAGE))
+            : this(resource, new CultureInfo(language ?? Constant.DefaultLanguage))
         { }
 
         public LocalizedResources(Type resource, CultureInfo cultureInfo)
