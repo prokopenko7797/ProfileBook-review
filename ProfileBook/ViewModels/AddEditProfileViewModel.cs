@@ -94,11 +94,13 @@ namespace ProfileBook.ViewModels
 
         private async void ExecuteSaveToolBarCommand()
         {
-            if(NickName.Length < 1)
+            if (NickName == default || NickName.Length < 1)
             {
                 await _userDialogs.AlertAsync("NickName is empty", "Error", "OK");
+                return;
             } 
-            else if (_profile.name != Name || _profile.nick_name != NickName
+            
+            if (_profile.name != Name || _profile.nick_name != NickName
                     || _profile.image_path != ImagePath || _profile.description != Description)
             {
                 _profile.name = Name;

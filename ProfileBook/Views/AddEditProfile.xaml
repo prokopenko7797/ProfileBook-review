@@ -4,7 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProfileBook.Views.AddEditProfile"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
 
 
     <ContentPage.ToolbarItems>
@@ -15,29 +16,36 @@
                      />
     </ContentPage.ToolbarItems>
 
-    <StackLayout Padding="30,10,30,10" HorizontalOptions="FillAndExpand"  VerticalOptions="StartAndExpand" >
+    <Grid Padding="30,10,30,10" HorizontalOptions="FillAndExpand"  VerticalOptions="StartAndExpand" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
 
-        
-        <Image Source="{Binding ImagePath}" >
+        <Image Source="{Binding ImagePath}" Aspect="AspectFit" Grid.Row="0">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding ImageTapCommand}" />
             </Image.GestureRecognizers>
         </Image>
         
         <Entry Text="{Binding NickName}" 
-               Placeholder = "NickName" />
+               Placeholder = "NickName" 
+               Grid.Row="1"/>
 
         <Entry Text="{Binding Name}" 
-               Placeholder = "Name"/>
+               Placeholder = "Name"
+               Grid.Row="2"/>
         
         <Editor Text="{Binding Description}" 
                 Placeholder="Description" 
-                BackgroundColor="Gray"
-                HeightRequest="120" />
+                HeightRequest="120" 
+                Grid.Row="3"/>
 
        
         
-    </StackLayout>
+    </Grid>
 
 
 

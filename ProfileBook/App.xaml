@@ -17,13 +17,13 @@
         <Color x:Key="LightTertiaryTextColor">Gray</Color>
 
         <!-- Dark colors -->
-        <Color x:Key="DarkPageBackgroundColor">Black</Color>
-        <Color x:Key="DarkNavigationBarColor">Teal</Color>
+        <Color x:Key="DarkPageBackgroundColor">Gray</Color>
+        <Color x:Key="DarkNavigationBarColor">Black</Color>
         <Color x:Key="DarkPrimaryColor">Teal</Color>
         <Color x:Key="DarkSecondaryColor">White</Color>
         <Color x:Key="DarkPrimaryTextColor">White</Color>
         <Color x:Key="DarkSecondaryTextColor">White</Color>
-        <Color x:Key="DarkTertiaryTextColor">WhiteSmoke</Color>
+        <Color x:Key="DarkTertiaryTextColor">#acacac</Color>
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor"
@@ -32,35 +32,36 @@
                     Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
         </Style>
 
-        <Style x:Key="ButtonStyle"
-               TargetType="Button">
-            <Setter Property="BackgroundColor"
-                    Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
-            <Setter Property="TextColor"
-                    Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
-            <Setter Property="HeightRequest"
-                    Value="45" />
-            <Setter Property="WidthRequest"
-                    Value="190" />
-            <Setter Property="CornerRadius"
-                    Value="18" />
-        </Style>
 
-        <Style x:Key="LargeLabelStyle"
-               TargetType="Label">
-            <Setter Property="TextColor"
-                    Value="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
-            <Setter Property="FontSize"
-                    Value="30" />
-        </Style>
-
-        <Style x:Key="MediumLabelStyle"
-               TargetType="Label">
+        <Style TargetType="Label">
             <Setter Property="TextColor"
                     Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
-            <Setter Property="FontSize"
-                    Value="25" />
         </Style>
+      
+
+        <Style TargetType="RadioButton">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+        </Style>
+      
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+        </Style>
+      
+
+        <Style TargetType="Editor">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightTertiaryTextColor}, Dark={StaticResource DarkTertiaryTextColor}}" />
+        </Style>
+
 
         <Style x:Key="SmallLabelStyle"
                TargetType="Label">

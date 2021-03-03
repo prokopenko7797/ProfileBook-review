@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:local="clr-namespace:ProfileBook"
-             x:Class="ProfileBook.Views.MainList"             
-             xmlns:resources = "clr-namespace:ProfileBook.Resources"
-             Title = "{Binding Resources[MainList]}" >
+             x:Class="ProfileBook.Views.MainList"
+             Title = "{Binding Resources[MainList]}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_exit_to_app.png"
@@ -38,7 +37,9 @@
                       RowHeight="100" 
                       Margin="10"
                       SelectionMode="None"
-                      x:Name="ListView1">
+                      SeparatorVisibility="None"
+                      x:Name="ListView1"
+                      BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -79,8 +80,8 @@
         </ScrollView>
 
         <Button Grid.Row="0" 
-            BackgroundColor="#1790fb"
-            BorderColor="Gray"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightNavigationBarColor}, Dark={StaticResource DarkNavigationBarColor}}"
+            BorderColor="{AppThemeBinding Light={StaticResource DarkPageBackgroundColor}, Dark={StaticResource LightPageBackgroundColor}}"
             CornerRadius="50"
             BorderWidth="7"
             WidthRequest="100" 
