@@ -40,7 +40,7 @@ namespace ProfileBook.ViewModels
             IMedia media, IUserDialogs userDialogs, IAuthorizationService authorizationService)
             : base(navigationService)
         {
-            Title = "Add Profile";
+            
             _profileService = profileService;
             _userDialogs = userDialogs;
             _media = media;
@@ -94,7 +94,7 @@ namespace ProfileBook.ViewModels
         {
             if (NickName == default || NickName.Length < 1)
             {
-                await _userDialogs.AlertAsync("NickName is empty", "Error", "OK");
+                await _userDialogs.AlertAsync(Resources["NickNameEmpty"], Resources["Error"], Resources["Ok"]);
                 return;
             } 
             
@@ -113,7 +113,7 @@ namespace ProfileBook.ViewModels
                 await NavigationService.GoBackAsync();
             }
 
-            else await _userDialogs.AlertAsync("NickName is empty", "Error", "OK");
+            else await _userDialogs.AlertAsync(Resources["NickNameEmpty"], Resources["Error"], Resources["Ok"]);
         }
 
 
@@ -172,8 +172,9 @@ namespace ProfileBook.ViewModels
                 Description = _profile.description;
                 ImagePath = _profile.image_path;
 
-
+                Title = Resources["EditProfilePage"];
             }
+            else Title = Resources["AddProfilePage"];
         }
 
 

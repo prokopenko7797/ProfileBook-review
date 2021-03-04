@@ -117,10 +117,103 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddProfileTitle" xml:space="preserve">
+    <value>Add Profile</value>
+  </data>
+  <data name="ConfPas" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete?" xml:space="preserve">
+    <value>Delete?</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditProfileTitle" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IncorrectLogPas" xml:space="preserve">
+    <value>Incorrect login or password.</value>
+  </data>
+  <data name="LogExist" xml:space="preserve">
+    <value>Login already exist.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogVal1" xml:space="preserve">
+    <value>Login must be at least</value>
+  </data>
+  <data name="LogVal2" xml:space="preserve">
+    <value>and no more than</value>
+  </data>
+  <data name="LogVal3" xml:space="preserve">
+    <value>characters.</value>
+  </data>
   <data name="MainList" xml:space="preserve">
     <value>MainList page</value>
   </data>
   <data name="MainListTitle" xml:space="preserve">
-    <value>TitleMainpage</value>
+    <value>MainList</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NickName" xml:space="preserve">
+    <value>NickName</value>
+  </data>
+  <data name="NickNameEmpty" xml:space="preserve">
+    <value>NickName is empty</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoProfiles" xml:space="preserve">
+    <value>No profiles added.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="PasMis" xml:space="preserve">
+    <value>Password mismatch.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasVal1" xml:space="preserve">
+    <value>Password must be at least</value>
+  </data>
+  <data name="SignInButton" xml:space="preserve">
+    <value>Sign IN</value>
+  </data>
+  <data name="SignInTitle" xml:space="preserve">
+    <value>SignIN</value>
+  </data>
+  <data name="SignUpButton" xml:space="preserve">
+    <value>SIGN UP</value>
+  </data>
+  <data name="SignUpTitle" xml:space="preserve">
+    <value>Users SignUp</value>
+  </data>
+  <data name="StartNum" xml:space="preserve">
+    <value>Login should not start with number.</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="UpLowNum" xml:space="preserve">
+    <value>Password must contain at least one uppercase letter, one lowercase letter and one number.</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

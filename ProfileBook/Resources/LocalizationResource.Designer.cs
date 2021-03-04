@@ -61,6 +61,132 @@ namespace ProfileBook.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Add Profile.
+        /// </summary>
+        public static string AddProfileTitle {
+            get {
+                return ResourceManager.GetString("AddProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm Password.
+        /// </summary>
+        public static string ConfPas {
+            get {
+                return ResourceManager.GetString("ConfPas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Delete?.
+        /// </summary>
+        public static string Delete_ {
+            get {
+                return ResourceManager.GetString("Delete?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit Profile.
+        /// </summary>
+        public static string EditProfileTitle {
+            get {
+                return ResourceManager.GetString("EditProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Incorrect login or password..
+        /// </summary>
+        public static string IncorrectLogPas {
+            get {
+                return ResourceManager.GetString("IncorrectLogPas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login already exist..
+        /// </summary>
+        public static string LogExist {
+            get {
+                return ResourceManager.GetString("LogExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login must be at least.
+        /// </summary>
+        public static string LogVal1 {
+            get {
+                return ResourceManager.GetString("LogVal1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на and no more than.
+        /// </summary>
+        public static string LogVal2 {
+            get {
+                return ResourceManager.GetString("LogVal2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на characters..
+        /// </summary>
+        public static string LogVal3 {
+            get {
+                return ResourceManager.GetString("LogVal3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на MainList page.
         /// </summary>
         public static string MainList {
@@ -70,11 +196,164 @@ namespace ProfileBook.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на TitleMainpage.
+        ///   Ищет локализованную строку, похожую на MainList.
         /// </summary>
         public static string MainListTitle {
             get {
                 return ResourceManager.GetString("MainListTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на NickName.
+        /// </summary>
+        public static string NickName {
+            get {
+                return ResourceManager.GetString("NickName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на NickName is empty.
+        /// </summary>
+        public static string NickNameEmpty {
+            get {
+                return ResourceManager.GetString("NickNameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на No profiles added..
+        /// </summary>
+        public static string NoProfiles {
+            get {
+                return ResourceManager.GetString("NoProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ok.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password mismatch..
+        /// </summary>
+        public static string PasMis {
+            get {
+                return ResourceManager.GetString("PasMis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password must be at least.
+        /// </summary>
+        public static string PasVal1 {
+            get {
+                return ResourceManager.GetString("PasVal1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign IN.
+        /// </summary>
+        public static string SignInButton {
+            get {
+                return ResourceManager.GetString("SignInButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SignIN.
+        /// </summary>
+        public static string SignInTitle {
+            get {
+                return ResourceManager.GetString("SignInTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SIGN UP.
+        /// </summary>
+        public static string SignUpButton {
+            get {
+                return ResourceManager.GetString("SignUpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Users SignUp.
+        /// </summary>
+        public static string SignUpTitle {
+            get {
+                return ResourceManager.GetString("SignUpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login should not start with number..
+        /// </summary>
+        public static string StartNum {
+            get {
+                return ResourceManager.GetString("StartNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Unknown error.
+        /// </summary>
+        public static string UnknownError {
+            get {
+                return ResourceManager.GetString("UnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password must contain at least one uppercase letter, one lowercase letter and one number..
+        /// </summary>
+        public static string UpLowNum {
+            get {
+                return ResourceManager.GetString("UpLowNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

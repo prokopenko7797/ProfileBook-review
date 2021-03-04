@@ -11,6 +11,7 @@ using ProfileBook.Servcies.Authorization;
 using System.ComponentModel;
 using Prism.Services;
 using ProfileBook.Views;
+using Xamarin.Forms;
 
 namespace ProfileBook.ViewModels
 {
@@ -29,7 +30,6 @@ namespace ProfileBook.ViewModels
         private string _Login;
         private string _Password;
         private bool _IsEnabled;
-        private string _tmp;
 
 
         private DelegateCommand _NavigateMainListCommand;
@@ -41,7 +41,6 @@ namespace ProfileBook.ViewModels
         public SignInViewModel(INavigationService navigationService, IPageDialogService pageDialogService,
         IAuthorizationService authorization): base(navigationService)
         {
-            Title = "Users SignIn";
 
             _pageDialogService = pageDialogService;
             _authorization = authorization;
@@ -71,11 +70,7 @@ namespace ProfileBook.ViewModels
         }
 
 
-        public string tmp
-        {
-            get { return _tmp; }
-            set { SetProperty(ref _tmp, value); }
-        }
+
 
    
         public DelegateCommand NavigateMainListButtonTapCommand =>
@@ -106,11 +101,11 @@ namespace ProfileBook.ViewModels
         private async void ExecuteNavigateMainViewCommand()
         {
             if (await _authorization.Authorize(Login, Password))
-                await NavigationService.NavigateAsync($"/NavigationPage/{nameof(MainList)}");
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainList)}");
 
             else
                 await _pageDialogService.DisplayAlertAsync(
-                        "Error", "Incorrect login or password.", "OK");
+                        Resources["Error"], Resources["IncorrectLogPas"], Resources["Ok"]);
         }
 
         #endregion

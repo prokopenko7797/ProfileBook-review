@@ -15,28 +15,43 @@
     </ContentPage.ToolbarItems>
 
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <StackLayout RadioButtonGroup.GroupName="SortBy" RadioButtonGroup.SelectedValue="{Binding Selection}">
+    <Grid HorizontalOptions="Center"  VerticalOptions="CenterAndExpand">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
+
+
+        <StackLayout Grid.Row="0" RadioButtonGroup.GroupName="SortBy" RadioButtonGroup.SelectedValue="{Binding Selection}">
             <Label Text="Sort by:"/>
             <RadioButton Content="Nickname" Value="1"/>
             <RadioButton Content="Name" Value="2"/>
             <RadioButton Content="Date" Value="3"/>
         </StackLayout>
 
-        <Label Text="{Binding Selection}"></Label>
+        <Label Grid.Row="1" Text="{Binding Resources[MainList]}"></Label>
 
-        <Grid>
+        <Label Grid.Row="2"  Text="Select Language"  />
+
+
+
+
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0.7*"/>
             </Grid.ColumnDefinitions>
             
             <Label Text="Dark theme:" Grid.Column="0"></Label>
-            <CheckBox Grid.Column="1" IsChecked="{Binding IsChecked}"></CheckBox>
+            <Switch Grid.Column="1" IsToggled="{Binding IsChecked}"></Switch>
+            <Label Grid.Row="2"  Text="{Binding Theme}"></Label>
         </Grid>
-        <Label Text="{Binding Theme}"></Label>
+        
 
-    </StackLayout>
+    </Grid>
 
 
 </ContentPage>

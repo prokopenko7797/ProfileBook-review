@@ -19,14 +19,12 @@ namespace ProfileBook.ViewModels
     public class SettingsViewModel : ViewModelBase
     {
         private readonly ISettingsManager _settingsManager;
-        private readonly IUserDialogs _userDialogs;
 
-        public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager, IUserDialogs userDialogs)
+
+        public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager)
             : base(navigationService)
         {
             _settingsManager = settingsManager;
-            _userDialogs = userDialogs;
-
 
 
             Theme = (int)Application.Current.RequestedTheme;
@@ -75,37 +73,27 @@ namespace ProfileBook.ViewModels
            (_SaveToolBarCommand = new DelegateCommand(SaveToolBar));
 
 
+        private OSAppTheme appTheme;
+
         private async void SaveToolBar()
         {
             _settingsManager.SortBy = Selection;
 
-            if (IsChecked == true)
-            {
+            _settingsManager.Theme = (int)appTheme;
 
-                MessagingCenter.Send<object, CultureChangedMessage>(this,
-               string.Empty, new CultureChangedMessage("ru"));
-                //Resources = new LocalizedResources(typeof(LocalizationResource), "ru");
-
-
-                _settingsManager.Theme = (int)OSAppTheme.Dark;
-                Application.Current.UserAppTheme = OSAppTheme.Dark;
-            }
-            else 
-            {
-
-                MessagingCenter.Send<object, CultureChangedMessage>(this,
-                    string.Empty, new CultureChangedMessage("en-US"));
-
-                //Resources = new LocalizedResources(typeof(LocalizationResource), "en-US");
-
-                _settingsManager.Theme = (int)OSAppTheme.Unspecified;
-                Application.Current.UserAppTheme = OSAppTheme.Unspecified;
-            }
-            
             _settingsManager.Lang = Lang;
 
             await NavigationService.GoBackAsync();
         }
+
+
+        private void ChangeLang(string lang) 
+        {
+            MessagingCenter.Send<object, CultureChangedMessage>(this, string.Empty, new CultureChangedMessage(lang));
+        }
+
+
+        #region ________Overrides_________
 
         public override void Initialize(INavigationParameters parameters)
         {
@@ -114,6 +102,8 @@ namespace ProfileBook.ViewModels
             Selection = _settingsManager.SortBy;
 
             Theme = _settingsManager.Theme;
+            appTheme = (OSAppTheme)_settingsManager.Theme;
+
 
             Lang = _settingsManager.Lang;
 
@@ -122,6 +112,45 @@ namespace ProfileBook.ViewModels
             else IsChecked = true;
         }
 
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+
+            if(args.PropertyName == nameof(IsChecked))
+            {
+                if (IsChecked == true)
+                {
+                    ChangeLang("ru");
+
+                    Lang = "ru";
+
+                    appTheme = OSAppTheme.Dark;
+                    Application.Current.UserAppTheme = OSAppTheme.Dark;
+                }
+                else
+                {
+                    ChangeLang("en-US");
+
+                    Lang = "en-US";
+
+                    appTheme = OSAppTheme.Unspecified;
+                    Application.Current.UserAppTheme = OSAppTheme.Unspecified;
+                }
+            }
+
+        }
+
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            base.OnNavigatedFrom(parameters);
+
+            Application.Current.UserAppTheme = (OSAppTheme)_settingsManager.Theme;
+
+            ChangeLang(_settingsManager.Lang);
+        }
+
+        #endregion
 
     }
 }

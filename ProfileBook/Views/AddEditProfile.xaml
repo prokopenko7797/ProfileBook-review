@@ -31,15 +31,15 @@
         </Image>
         
         <Entry Text="{Binding NickName}" 
-               Placeholder = "NickName" 
+               Placeholder = "{Binding Resources[NickName]}" 
                Grid.Row="1"/>
 
         <Entry Text="{Binding Name}" 
-               Placeholder = "Name"
+               Placeholder = "{Binding Resources[Name]}"
                Grid.Row="2"/>
         
         <Editor Text="{Binding Description}" 
-                Placeholder="Description" 
+                Placeholder="{Binding Resources[Description]}" 
                 HeightRequest="120" 
                 Grid.Row="3"/>
 

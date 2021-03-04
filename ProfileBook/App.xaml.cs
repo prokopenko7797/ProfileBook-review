@@ -25,13 +25,13 @@ namespace ProfileBook
     {
 
         #region -----Services----
-        private ISettingsManager _settingsManager;
-        private ISettingsManager settingsManager => 
-            _settingsManager ?? (_settingsManager = Container.Resolve<ISettingsManager>());
+        private ISettingsManager _SettingsManager;
+        private ISettingsManager SettingsManager => 
+            _SettingsManager ?? (_SettingsManager = Container.Resolve<ISettingsManager>());
 
-        private IAuthorizationService _authorizationService;
-        private IAuthorizationService authorizationService =>
-            _authorizationService ?? (_authorizationService = Container.Resolve<IAuthorizationService>());
+        private IAuthorizationService _AuthorizationService;
+        private IAuthorizationService AuthorizationService =>
+            _AuthorizationService ?? (_AuthorizationService = Container.Resolve<IAuthorizationService>());
 
 
 
@@ -46,11 +46,11 @@ namespace ProfileBook
         {
             InitializeComponent();
 
-            Application.Current.UserAppTheme = (OSAppTheme)settingsManager.Theme;
+            Application.Current.UserAppTheme = (OSAppTheme)SettingsManager.Theme;
 
-            if (authorizationService.IsAuthorize()) 
-                await NavigationService.NavigateAsync($"NavigationPage/{nameof(SignIn)}");
-            else await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainList)}");
+            if (AuthorizationService.IsAuthorize()) 
+                await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(SignIn)}");
+            else await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainList)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -68,9 +68,6 @@ namespace ProfileBook
             containerRegistry.RegisterInstance(UserDialogs.Instance);
             containerRegistry.RegisterInstance(CrossMedia.Current);
 
-
-
-            containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<SignIn, SignInViewModel>();

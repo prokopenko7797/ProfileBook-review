@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProfileBook.Views.SignIn"
-             Title="{Binding Title}"
+             Title="{Binding Resources[SignInTitle]}"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
 
 
@@ -14,16 +14,15 @@
         
         <StackLayout Padding="0,0,0,150">
 
-            <Label Text="{Binding tmp}"></Label>
-            <Entry Placeholder = "Login"  Text="{Binding Login}" MaxLength="16" />
-            <Entry Placeholder = "Password" IsPassword ="True"  Text="{Binding Password}" MaxLength="16"/>
+            <Entry Placeholder = "{Binding Resources[Login]}"  Text="{Binding Login}" MaxLength="16" />
+            <Entry Placeholder = "{Binding Resources[Password]}" IsPassword ="True"  Text="{Binding Password}" MaxLength="16"/>
         
         </StackLayout>
 
 
- 
-        
-        <Button Text="Sign IN" BackgroundColor="DarkOrange"  Command="{Binding NavigateMainListButtonTapCommand}"></Button>
+
+
+        <Button Text="{Binding Resources[SignInButton]}" BackgroundColor="DarkOrange"  Command="{Binding NavigateMainListButtonTapCommand}"></Button>
 
 
         <StackLayout Padding="0,15,0,0">
@@ -32,7 +31,7 @@
                 <Label.FormattedText>
                     <FormattedString>
 
-                        <Span Text="SING UP"
+                        <Span Text="{Binding Resources[SignUpButton]}"
                       TextColor="Blue"
                       TextDecorations="Underline">
                             <Span.GestureRecognizers>

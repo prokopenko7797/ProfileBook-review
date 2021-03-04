@@ -28,7 +28,7 @@
   <ItemGroup>
     <EmbeddedResource Update="Resources\LocalizationResource.ru.resx">
       <SubType>Designer</SubType>
-      <Generator></Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\LocalizationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

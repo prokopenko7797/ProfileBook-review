@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProfileBook.Views.MainList"
-             Title = "{Binding Resources[MainList]}"
+             Title = "{Binding Resources[MainListTitle]}"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
 
     <ContentPage.ToolbarItems>
@@ -25,9 +25,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        
-        <Label Text="No profiles added." 
+
+
+        <Label Text="{Binding Resources[NoProfiles]}" 
                HorizontalOptions="Center"
                VerticalOptions="Center"
                IsVisible="{Binding IsVisible}"></Label>

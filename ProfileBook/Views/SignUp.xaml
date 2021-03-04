@@ -4,18 +4,25 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProfileBook.Views.SignUp"
-             Title="{Binding Title}"
+             Title="{Binding Resources[SignUpTitle]}"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
 
     <StackLayout Padding="30,0,30,0" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" >
 
         <StackLayout Padding="0,0,0,150">
-            <Label Text="{Binding tmp}"></Label>
-            <Entry Placeholder = "Login" Text="{Binding Login}" MaxLength="16" />
-            <Entry Placeholder = "Password" IsPassword ="True" Text="{Binding Password}" MaxLength="16"/>
-            <Entry Placeholder = "Confirm Password" IsPassword ="True" Text="{Binding ConfirmPassword}" MaxLength="16" />
+
+            <Entry Placeholder = "{Binding Resources[Login]}" 
+                   Text="{Binding Login}" 
+                   MaxLength="16" />
+            <Entry Placeholder = "{Binding Resources[Password]}" 
+                   IsPassword ="True" Text="{Binding Password}" 
+                   MaxLength="16"/>
+            <Entry Placeholder = "{Binding Resources[ConfPas]}" 
+                   IsPassword ="True" 
+                   Text="{Binding ConfirmPassword}" 
+                   MaxLength="16" />
         </StackLayout>
-        <Button Text="Sign IN" BackgroundColor="DarkOrange" Command="{Binding AddUserButtonTapCommand}"></Button>
+        <Button Text="{Binding Resources[SignInButton]}" BackgroundColor="DarkOrange" Command="{Binding AddUserButtonTapCommand}"></Button>
         
 
     </StackLayout>

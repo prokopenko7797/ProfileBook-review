@@ -38,11 +38,15 @@ namespace ProfileBook.ViewModels
             private set;
         }
 
+        // &&&&&&&&&77
+        private readonly ISettingsManager settingsManager = new SettingsManager();
+        // ???????????
+
 
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
-            Resources = new LocalizedResources(typeof(LocalizationResource));
+            Resources = new LocalizedResources(typeof(LocalizationResource), settingsManager.Lang);
         }
 
 

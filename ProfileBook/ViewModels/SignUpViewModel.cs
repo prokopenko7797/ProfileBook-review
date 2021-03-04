@@ -7,6 +7,7 @@ using ProfileBook.Enums;
 using ProfileBook.Servcies.Registration;
 using ProfileBook.Views;
 using ProfileBook.Constants;
+using Xamarin.Forms;
 
 namespace ProfileBook.ViewModels
 {
@@ -22,7 +23,7 @@ namespace ProfileBook.ViewModels
         private string _login;
         private string _password;
         private string _confirmpassword;
-        private string _tmp;
+
 
 
         private DelegateCommand _AddUserButtonTapCommand;
@@ -34,7 +35,6 @@ namespace ProfileBook.ViewModels
             IRegistrationService registrationService)
             : base(navigationService)
         {
-            Title = "Users SignUp";
 
             _pageDialogService = pageDialogService;
             _registrationService = registrationService;
@@ -77,12 +77,6 @@ namespace ProfileBook.ViewModels
 
 
 
-        public string tmp
-        {
-            get { return _tmp; }
-            set { SetProperty(ref _tmp, value); }
-        }
-
         
         public DelegateCommand AddUserButtonTapCommand =>
             _AddUserButtonTapCommand ??
@@ -103,56 +97,58 @@ namespace ProfileBook.ViewModels
                 case ValidEnum.NotInRangeLogin:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", $"Login must be at least {Constant.MinLoginLength} " +
-                        $"and no more than {Constant.MaxLoginLength} characters.", "OK");
+                        Resources["Error"], $"{Resources["LogVal1"]} {Constant.MinLoginLength} " +
+                        $"{Resources["LogVal2"]} {Constant.MaxLoginLength} {Resources["LogVal3"]}", Resources["Ok"]);
                     }
                     break;
 
                 case ValidEnum.NotInRangePassword:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", $"Password must be at least {Constant.MinPasswordLength} " +
-                        $"and no more than {Constant.MaxPasswordLength} characters.", "OK");
+                        Resources["Error"], $"{Resources["PasVal1"]} {Constant.MinPasswordLength} " +
+                        $"{Resources["LogVal2"]} {Constant.MaxPasswordLength} {Resources["LogVal3"]}", Resources["Ok"]);
                     }
                     break;
                 case ValidEnum.HasntMach:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", "Password mismatch.", "OK");
+                        Resources["Error"], Resources["PasMis"], Resources["Ok"]);
                     }
                     break;
                 case ValidEnum.HasntUpLowNum:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", "Password must contain at least one uppercase letter, one lowercase letter and one number.", "OK");
+                        Resources["Error"], Resources["UpLowNum"], Resources["Ok"]);
                     }
                     break;
 
                 case ValidEnum.StartWithNum:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", "Login should not start with number.", "OK");
+                        Resources["Error"], Resources["StartNum"], Resources["Ok"]);
                     }
                     break;
                 case ValidEnum.LoginExist:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                        "Error", "Login already exist.", "OK");
+                        Resources["Error"], Resources["LogExist"], Resources["Ok"]);
                     }
                     break;
                 case ValidEnum.Success:
                     {
 
-                        var p = new NavigationParameters();
-                        p.Add("Login", Login);
+                        var p = new NavigationParameters
+                        {
+                            { "Login", Login }
+                        };
 
-                        await NavigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}", p);
+                        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignIn)}", p);
                     }
                     break;
                 default:
                     {
                         await _pageDialogService.DisplayAlertAsync(
-                            "Error", "Unknown error", "OK");
+                            Resources["Error"], Resources["UnknownError"], Resources["Ok"]);
                     }
                     break;
 

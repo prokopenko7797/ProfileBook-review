@@ -33,7 +33,6 @@ namespace ProfileBook.ViewModels
         private ObservableCollection<Profile> _profileList;
 
 
-        private string _tmp;
         private bool _IsVisible;
         
 
@@ -66,11 +65,7 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _profileList, value); }
         }
 
-        public string tmp
-        {
-            get { return _tmp; }
-            set { SetProperty(ref _tmp, value); }
-        }
+
 
         public bool IsVisible
         {
@@ -117,18 +112,19 @@ namespace ProfileBook.ViewModels
 
         private async void DeleteCommand(object sender)
         {
-            Profile profile = sender as Profile;
-            if (profile == null) return;
+            if (!(sender is Profile profile)) return;
+
             var result = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
             {
-                Message = "Delete?",
-                OkText = "Yes",
-                CancelText = "No"
+                Message = Resources["Delete?"],
+                OkText = Resources["Yes"],
+                CancelText = Resources["No"]
             });
             if (result)
             {
                 await _profileService.Dalete(profile.id);
-                UpdateCollection();
+                //UpdateCollection();
+                ProfileList.Remove(profile);
             }
         }
 
@@ -137,8 +133,10 @@ namespace ProfileBook.ViewModels
         {
             Profile profile = sender as Profile;
 
-            var p = new NavigationParameters();
-            p.Add(nameof(Profile), profile);
+            var p = new NavigationParameters
+            {
+                { nameof(Profile), profile }
+            };
 
             await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}", p);
         }
@@ -148,8 +146,10 @@ namespace ProfileBook.ViewModels
         {
             Profile profile = sender as Profile;
 
-            var p = new NavigationParameters();
-            p.Add(nameof(Profile.image_path), profile.image_path);
+            var p = new NavigationParameters
+            {
+                { nameof(Profile.image_path), profile.image_path }
+            };
             await NavigationService.NavigateAsync($"{nameof(ProfileImage)}", p, true, true);
         }
 
@@ -164,15 +164,13 @@ namespace ProfileBook.ViewModels
         private async void NavigateSettingsCommand()
         {
             await NavigationService.NavigateAsync($"{nameof(Settings)}");
-            /////////////////////////////////////////////////////////////////
-
         }
 
 
         private async void NavigateLogOutToolBarCommand() 
         {
             _authorizationService.LogOut();
-            await NavigationService.NavigateAsync($"/NavigationPage/{nameof(SignIn)}");
+            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignIn)}");
         }
 
         #endregion
