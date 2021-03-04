@@ -6,7 +6,7 @@ using SQLite;
 namespace ProfileBook.Models
 {
     [Table ("Profile")]
-    public class Profile: IModel
+    public class Profile: IEntityModel
     {
         [PrimaryKey, AutoIncrement, Column("id")]
         public int id { get; set; }

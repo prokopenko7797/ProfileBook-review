@@ -8,6 +8,6 @@ namespace ProfileBook.Servcies.Registration
 {
     public interface IRegistrationService
     {
-        Task<ValidEnum> Registrate(string login, string password, string confirmpassword);
+        Task<bool> Registrate(string login, string password);
     }
 }

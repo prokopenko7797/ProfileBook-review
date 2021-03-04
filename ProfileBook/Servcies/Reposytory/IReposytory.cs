@@ -6,7 +6,7 @@ using ProfileBook.Models;
 
 namespace ProfileBook.Servcies.Repository
 {
-    public interface IRepository<T> where T : IModel, new()
+    public interface IRepository<T> where T : IEntityModel, new()
     {
         Task<List<T>> GetAll();
 

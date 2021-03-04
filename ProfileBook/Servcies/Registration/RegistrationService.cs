@@ -23,49 +23,19 @@ namespace ProfileBook.Servcies.Registration
 
 
 
-        public async Task<ValidEnum>  Registrate(string login, string password, string confirmpassword)
+        public async Task<bool>  Registrate(string login, string password)
         {
-            if (!Validator.InRange(login, Constant.MinLoginLength, Constant.MaxLoginLength))
-            {   
-                return ValidEnum.NotInRangeLogin;
-            }
-
-            if (!Validator.InRange(password, Constant.MinPasswordLength, Constant.MaxPasswordLength))
-            {
-                return ValidEnum.NotInRangePassword;
-            }
-
-
-            if (Validator.StartWithNumeral(login))
-            {       
-                return ValidEnum.StartWithNum;
-            }
-
-            if (!Validator.HasUpLowNum(password))
-            {
-                return ValidEnum.HasntUpLowNum;
-            }
-
-
-
-            if (!Validator.Match(password, confirmpassword))
-            {
-                
-                return ValidEnum.HasntMach;
-            }
-
-
-
+            
             User user = await _repository.FindWithQuery($"SELECT * FROM {nameof(User)} WHERE login='{login}'");
 
             if (user != null)
             {
-                
-                return ValidEnum.LoginExist;
+
+                return false;
             }
 
             await _repository.Insert(new User { Login = login, Password = password });
-            return ValidEnum.Success;
+            return true;
         }
     }
 }

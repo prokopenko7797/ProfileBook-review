@@ -9,7 +9,7 @@ using ProfileBook.Constants;
 
 namespace ProfileBook.Servcies.Repository
 {
-    public class Repository<T> : IRepository<T> where T : IModel, new()
+    public class Repository<T> : IRepository<T> where T : IEntityModel, new()
     {
         private readonly SQLiteAsyncConnection _database;
 

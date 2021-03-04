@@ -8,6 +8,8 @@ using ProfileBook.Servcies.Registration;
 using ProfileBook.Views;
 using ProfileBook.Constants;
 using Xamarin.Forms;
+using ProfileBook.Validators;
+using System.Threading.Tasks;
 
 namespace ProfileBook.ViewModels
 {
@@ -90,71 +92,66 @@ namespace ProfileBook.ViewModels
 
         #region -----Private Helpers-----
 
-        private async void ExecuteddUserButtonTapCommand()
+        private async Task<bool> LogPassCheck(string login, string password, string confirmpassword) 
         {
-            switch (await _registrationService.Registrate(Login, Password, ConfirmPassword))
+            if (!Validator.InRange(login, Constant.MinLoginLength, Constant.MaxLoginLength))
             {
-                case ValidEnum.NotInRangeLogin:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
+                await _pageDialogService.DisplayAlertAsync(
                         Resources["Error"], $"{Resources["LogVal1"]} {Constant.MinLoginLength} " +
                         $"{Resources["LogVal2"]} {Constant.MaxLoginLength} {Resources["LogVal3"]}", Resources["Ok"]);
-                    }
-                    break;
+                return false;
+            }
 
-                case ValidEnum.NotInRangePassword:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
+            if (!Validator.InRange(password, Constant.MinPasswordLength, Constant.MaxPasswordLength))
+            {
+                await _pageDialogService.DisplayAlertAsync(
                         Resources["Error"], $"{Resources["PasVal1"]} {Constant.MinPasswordLength} " +
                         $"{Resources["LogVal2"]} {Constant.MaxPasswordLength} {Resources["LogVal3"]}", Resources["Ok"]);
-                    }
-                    break;
-                case ValidEnum.HasntMach:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
-                        Resources["Error"], Resources["PasMis"], Resources["Ok"]);
-                    }
-                    break;
-                case ValidEnum.HasntUpLowNum:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
-                        Resources["Error"], Resources["UpLowNum"], Resources["Ok"]);
-                    }
-                    break;
-
-                case ValidEnum.StartWithNum:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
-                        Resources["Error"], Resources["StartNum"], Resources["Ok"]);
-                    }
-                    break;
-                case ValidEnum.LoginExist:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
-                        Resources["Error"], Resources["LogExist"], Resources["Ok"]);
-                    }
-                    break;
-                case ValidEnum.Success:
-                    {
-
-                        var p = new NavigationParameters
-                        {
-                            { "Login", Login }
-                        };
-
-                        await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignIn)}", p);
-                    }
-                    break;
-                default:
-                    {
-                        await _pageDialogService.DisplayAlertAsync(
-                            Resources["Error"], Resources["UnknownError"], Resources["Ok"]);
-                    }
-                    break;
-
+                return false;
             }
-         
-            
+
+
+            if (Validator.StartWithNumeral(login))
+            {
+                await _pageDialogService.DisplayAlertAsync(
+                        Resources["Error"], Resources["StartNum"], Resources["Ok"]);
+                return false;
+            }
+
+            if (!Validator.HasUpLowNum(password))
+            {
+                await _pageDialogService.DisplayAlertAsync(
+                        Resources["Error"], Resources["UpLowNum"], Resources["Ok"]);
+                return false;
+            }
+
+            if (!Validator.Match(password, confirmpassword))
+            {
+
+                await _pageDialogService.DisplayAlertAsync(
+                        Resources["Error"], Resources["PasMis"], Resources["Ok"]);
+                return false;
+            }
+            return true;
+
+        }
+
+
+        private async void ExecuteddUserButtonTapCommand()
+        {
+            if(await LogPassCheck(Login, Password, ConfirmPassword))
+            {
+                if (await _registrationService.Registrate(Login, Password))
+                {
+                    var p = new NavigationParameters{ { "Login", Login } };
+
+                    await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignIn)}", p);
+
+                }
+                else await _pageDialogService.DisplayAlertAsync(Resources["Error"], Resources["LogExist"], Resources["Ok"]);
+            }
+
+
         }
 
 
