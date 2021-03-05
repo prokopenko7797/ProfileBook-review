@@ -18,13 +18,14 @@ namespace ProfileBook.ViewModels
     public class SignInViewModel : ViewModelBase
     {
 
-
-        #region -----Private-----
+        #region _____Services____
 
         private readonly IPageDialogService _pageDialogService;
         private readonly IAuthorizationService _authorization;
 
+        #endregion
 
+        #region ________Private______
 
 
         private string _Login;
@@ -69,28 +70,27 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsEnabled, value); }
         }
 
+        #endregion
 
 
+        #region _______Comands______
 
-   
         public DelegateCommand NavigateMainListButtonTapCommand =>
             _NavigateMainListCommand ?? 
             (_NavigateMainListCommand = new DelegateCommand(ExecuteNavigateMainViewCommand)
                                                             .ObservesCanExecute(() => IsEnabled));
 
 
-
-
         public DelegateCommand NavigateSignUpButtonTapCommand =>
             _NavigateSignUpCommand ?? 
             (_NavigateSignUpCommand = new DelegateCommand(ExecuteNavigateSignUpCommand));
 
-        #endregion
+        #endregion 
 
 
 
 
-        #region -----Private Helpers-----
+        #region ________Private Helpers_______
 
         private async void ExecuteNavigateSignUpCommand()
         {
@@ -111,7 +111,7 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        #region -----Overrides-----
+        #region ________Overrides_______
 
 
 

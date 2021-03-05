@@ -22,19 +22,26 @@ namespace ProfileBook.ViewModels
     public class MainListViewModel : ViewModelBase
     {
 
-        #region -----Private-----
-
-
-        private readonly IProfileService _profileService;
-        private readonly IAuthorizationService _authorizationService;
-        
-
+        #region _____Private______
 
         private ObservableCollection<Profile> _profileList;
 
+        private ICommand _LogOutToolBarCommand;
+        private ICommand _SettingsToolBarCommand;
+        private ICommand _AddEditButtonClicked;
+        private ICommand _DeleteCommandTap;
+        private ICommand _EditCommandTap;
+        private ICommand _ImageCommandTap;
 
         private bool _IsVisible;
-        
+
+
+        #endregion
+
+        #region ______Services_____
+
+        private readonly IProfileService _profileService;
+        private readonly IAuthorizationService _authorizationService;
 
         #endregion
 
@@ -42,21 +49,12 @@ namespace ProfileBook.ViewModels
             IAuthorizationService authorizationService)
             : base(navigationService)
         {
-
             _authorizationService = authorizationService;
             _profileService = profileService;
-
-            //Title = LocalizationResource.MainList;
-            //Title = Resources["MainList"];
-            //Title = "Main List";
-            //xmlns:resources="clr-namespace:ProfileBook.Resources"
-            // Title="{x:Static resources:LocalizationResource.MainList}">
-            //Title = (this.BindingContext as MainListViewModel).Resources["TheResourceYouWant"];
-
         }
 
 
-        #region -----Public Properties-----
+        #region _______Public Properties________
 
 
         public ObservableCollection<Profile> ProfileList 
@@ -77,13 +75,6 @@ namespace ProfileBook.ViewModels
 
 
         #region _____Comdands______
-
-        private ICommand _LogOutToolBarCommand; 
-        private ICommand _SettingsToolBarCommand;
-        private ICommand _AddEditButtonClicked;
-        private ICommand _DeleteCommandTap;
-        private ICommand _EditCommandTap;
-        private ICommand _ImageCommandTap;
 
         public ICommand LogOutToolBarCommand =>
             _LogOutToolBarCommand ?? (_LogOutToolBarCommand =
@@ -107,7 +98,7 @@ namespace ProfileBook.ViewModels
 
 
 
-        #region -----Private Helpers-----
+        #region _______Private Helpers_____
 
 
         private async void DeleteCommand(object sender)
@@ -175,6 +166,7 @@ namespace ProfileBook.ViewModels
 
         #endregion
 
+        #region ____Overrides_____
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -195,5 +187,6 @@ namespace ProfileBook.ViewModels
             else IsVisible = true;
         }
 
+        #endregion
     }
 }

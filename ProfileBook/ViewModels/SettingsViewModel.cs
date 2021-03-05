@@ -19,8 +19,32 @@ namespace ProfileBook.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
+        #region _____Services
+
         private readonly ISettingsManager _settingsManager;
 
+        #endregion
+
+        #region ____Private_____
+
+        private DelegateCommand _SaveToolBarCommand;
+
+        private OSAppTheme appTheme;
+
+        private int _SelectedSort;
+        private string _SelectedLang;
+        private bool _IsChecked;
+        private bool _IsCheckedEn;
+        private bool _IsCheckedRu;
+        private bool _IsCheckedName;
+        private bool _IsCheckedNickName;
+        private bool _IsCheckedDate;
+        private int _Theme;
+        private string _Lang;
+
+
+
+        #endregion
 
         public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager)
             : base(navigationService)
@@ -32,9 +56,9 @@ namespace ProfileBook.ViewModels
 
         }
 
- 
 
-        private int _SelectedSort;
+
+        #region ______Public Properties______
 
         public int SelectedSort
         {
@@ -42,18 +66,11 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _SelectedSort, value); }
         }
 
-
-
-        private string _SelectedLang;
-
         public string SelectedLang
         {
             get { return _SelectedLang; }
             set { SetProperty(ref _SelectedLang, value); }
         }
-
-
-        private bool _IsChecked;
 
         public bool IsChecked
         {
@@ -61,15 +78,11 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsChecked, value); }
         }
 
-        private bool _IsCheckedEn;
-
         public bool IsCheckedEn
         {
             get { return _IsCheckedEn; }
             set { SetProperty(ref _IsCheckedEn, value); }
         }
-
-        private bool _IsCheckedRu;
 
         public bool IsCheckedRu
         {
@@ -77,22 +90,17 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsCheckedRu, value); }
         }
 
-        private bool _IsCheckedName;
-
         public bool IsCheckedName
         {
             get { return _IsCheckedName; }
             set { SetProperty(ref _IsCheckedName, value); }
         }
 
-        private bool _IsCheckedNickName;
-
         public bool IsCheckedNickName
         {
             get { return _IsCheckedNickName; }
             set { SetProperty(ref _IsCheckedNickName, value); }
         }
-        private bool _IsCheckedDate;
 
         public bool IsCheckedDate
         {
@@ -100,15 +108,11 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsCheckedDate, value); }
         }
 
-        private int _Theme;
-
         public int Theme
         {
             get { return _Theme; }
             set { SetProperty(ref _Theme, value); }
         }
-
-        private string _Lang;
 
         public string Lang
         {
@@ -116,15 +120,18 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _Lang, value); }
         }
 
+        #endregion
 
-        private DelegateCommand _SaveToolBarCommand;
+
+        #region _______Comands_______
 
         public DelegateCommand SaveToolBarCommand =>
            _SaveToolBarCommand ??
            (_SaveToolBarCommand = new DelegateCommand(SaveToolBar));
 
+        #endregion
 
-        private OSAppTheme appTheme;
+        #region _____Private Helpers______
 
         private async void SaveToolBar()
         {
@@ -143,6 +150,8 @@ namespace ProfileBook.ViewModels
             MessagingCenter.Send<object, CultureChangedMessage>(this, string.Empty, new CultureChangedMessage(lang));
         }
 
+
+        #endregion
 
         #region ________Overrides_________
 
@@ -197,18 +206,18 @@ namespace ProfileBook.ViewModels
             {
                 if (IsChecked == true)
                 {
-                    ChangeLang("ru");
+                    ChangeLang(ResourcesLangConst.ru);
 
-                    Lang = "ru";
+                    Lang = ResourcesLangConst.ru;
 
                     appTheme = OSAppTheme.Dark;
                     Application.Current.UserAppTheme = OSAppTheme.Dark;
                 }
                 else
                 {
-                    ChangeLang("en-US");
+                    ChangeLang(ResourcesLangConst.en);
 
-                    Lang = "en-US";
+                    Lang = ResourcesLangConst.en;
 
                     appTheme = OSAppTheme.Unspecified;
                     Application.Current.UserAppTheme = OSAppTheme.Unspecified;

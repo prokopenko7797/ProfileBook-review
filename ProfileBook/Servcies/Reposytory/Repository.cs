@@ -11,6 +11,7 @@ namespace ProfileBook.Servcies.Repository
 {
     public class Repository<T> : IRepository<T> where T : IEntityModel, new()
     {
+
         private readonly SQLiteAsyncConnection _database;
 
         public Repository()

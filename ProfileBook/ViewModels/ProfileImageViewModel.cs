@@ -15,16 +15,20 @@ namespace ProfileBook.ViewModels
 
         private string _ImagePath;
 
+        
+
+        public ProfileImageViewModel(INavigationService navigationService)
+            : base(navigationService)
+        {
+        }
+
+
         public string ImagePath
         {
             get { return _ImagePath; }
             set { SetProperty(ref _ImagePath, value); }
         }
 
-        public ProfileImageViewModel(INavigationService navigationService)
-            : base(navigationService)
-        {
-        }
 
         public ICommand GoBackCommand => new Command(GoBack);
 

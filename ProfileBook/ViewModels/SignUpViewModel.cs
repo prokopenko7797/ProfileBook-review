@@ -15,12 +15,14 @@ namespace ProfileBook.ViewModels
 {
     public class SignUpViewModel : ViewModelBase
     {
-
-        #region -----Private-----
+        #region _______Services______
 
         private readonly IPageDialogService _pageDialogService;
         private readonly IRegistrationService _registrationService;
 
+        #endregion
+
+        #region _______Private_______
 
         private string _login;
         private string _password;
@@ -77,14 +79,13 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsEnabled, value); }
         }
 
+        #endregion
 
 
-        
-        public DelegateCommand AddUserButtonTapCommand =>
-            _AddUserButtonTapCommand ??
-            (_AddUserButtonTapCommand = 
+        #region ________Comands________
+        public DelegateCommand AddUserButtonTapCommand => 
+            _AddUserButtonTapCommand ?? (_AddUserButtonTapCommand =
             new DelegateCommand(ExecuteddUserButtonTapCommand)).ObservesCanExecute(() => IsEnabled);
-
 
 
         #endregion

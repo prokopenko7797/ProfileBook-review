@@ -12,9 +12,9 @@ namespace ProfileBook.Servcies.Registration
 {
     public class RegistrationService : IRegistrationService
     {
-
+        #region _____Services______
         private readonly IRepository<User> _repository;
- 
+        #endregion
 
         public RegistrationService(IRepository<User> repository)
         {

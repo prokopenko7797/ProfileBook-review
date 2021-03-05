@@ -295,7 +295,7 @@ namespace ProfileBook.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Select Language.
+        ///   Ищет локализованную строку, похожую на Select Language:.
         /// </summary>
         public static string SelectLang {
             get {

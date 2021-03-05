@@ -12,8 +12,10 @@ namespace ProfileBook.Servcies.Authorization
 {
     public class AuthorizationService : IAuthorizationService
     {
+        #region ______Services_________
         private readonly IRepository<User> _repository;
         private readonly ISettingsManager _settingsManager;
+        #endregion
 
         public AuthorizationService(IRepository<User> repository, ISettingsManager settingsManager)
         {

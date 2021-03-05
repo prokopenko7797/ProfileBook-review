@@ -123,6 +123,9 @@
   <data name="ConfPas" xml:space="preserve">
     <value>Подтвердите пароль</value>
   </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Темная тема:</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="PasVal1" xml:space="preserve">
     <value>Пароль должен быть хотя бы</value>
+  </data>
+  <data name="SelectLang" xml:space="preserve">
+    <value>Выбранный язык:</value>
   </data>
   <data name="SettingsDate" xml:space="preserve">
     <value>Дате</value>

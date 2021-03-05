@@ -18,22 +18,28 @@ namespace ProfileBook.ViewModels
 {
     public class AddEditProfileViewModel : ViewModelBase
     {
+        #region ______Private______
+
         private string _NickName;
         private string _Name;
         private string _ImagePath;
         private string _Description;
 
+        private DelegateCommand _SaveToolBarCommand;
+        private DelegateCommand _ImageTapCommand;
 
         private Profile _profile = new Profile();
+
+        #endregion
+
+        #region ______Services______
 
         private readonly IProfileService _profileService;
         private readonly IMedia _media;
         private readonly IUserDialogs _userDialogs;
         private readonly IAuthorizationService _authorizationService;
 
-
-        private DelegateCommand _SaveToolBarCommand;
-        private DelegateCommand _ImageTapCommand;
+        #endregion
 
 
         public AddEditProfileViewModel(INavigationService navigationService, IProfileService profileService,
@@ -50,6 +56,8 @@ namespace ProfileBook.ViewModels
 
         }
 
+
+        #region ____Public Properties_____
 
         public string NickName
         {
@@ -75,7 +83,9 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _ImagePath, value); }
         }
 
+        #endregion
 
+        #region ______Comands_____
 
         public DelegateCommand SaveToolBarCommand =>
            _SaveToolBarCommand ??
@@ -85,7 +95,7 @@ namespace ProfileBook.ViewModels
             _ImageTapCommand ??
             (_ImageTapCommand = new DelegateCommand(ExecuteImageTapCommand));
 
-
+        #endregion
 
         #region ______Private Helpers________
 

@@ -196,7 +196,7 @@
     <value>Password must be at least</value>
   </data>
   <data name="SelectLang" xml:space="preserve">
-    <value>Select Language</value>
+    <value>Select Language:</value>
   </data>
   <data name="SettingsDate" xml:space="preserve">
     <value>Date</value>

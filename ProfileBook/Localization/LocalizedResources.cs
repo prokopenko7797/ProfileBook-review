@@ -14,6 +14,9 @@ namespace ProfileBook.Localization
        
 
         readonly ResourceManager ResourceManager;
+
+
+
         CultureInfo CurrentCultureInfo;
 
         public string this[string key]
