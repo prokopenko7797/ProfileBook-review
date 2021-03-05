@@ -123,6 +123,9 @@
   <data name="ConfPas" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dark theme:</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -192,6 +195,21 @@
   <data name="PasVal1" xml:space="preserve">
     <value>Password must be at least</value>
   </data>
+  <data name="SelectLang" xml:space="preserve">
+    <value>Select Language</value>
+  </data>
+  <data name="SettingsDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="SettingsName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SettingsNickName" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SignInButton" xml:space="preserve">
     <value>Sign IN</value>
   </data>
@@ -203,6 +221,9 @@
   </data>
   <data name="SignUpTitle" xml:space="preserve">
     <value>Users SignUp</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by:</value>
   </data>
   <data name="StartNum" xml:space="preserve">
     <value>Login should not start with number.</value>

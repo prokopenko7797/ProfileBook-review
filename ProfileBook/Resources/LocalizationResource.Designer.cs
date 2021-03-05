@@ -79,6 +79,15 @@ namespace ProfileBook.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dark theme:.
+        /// </summary>
+        public static string DarkTheme {
+            get {
+                return ResourceManager.GetString("DarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Delete.
         /// </summary>
         public static string Delete {
@@ -286,6 +295,51 @@ namespace ProfileBook.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Select Language.
+        /// </summary>
+        public static string SelectLang {
+            get {
+                return ResourceManager.GetString("SelectLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Date.
+        /// </summary>
+        public static string SettingsDate {
+            get {
+                return ResourceManager.GetString("SettingsDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Name.
+        /// </summary>
+        public static string SettingsName {
+            get {
+                return ResourceManager.GetString("SettingsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Nickname.
+        /// </summary>
+        public static string SettingsNickName {
+            get {
+                return ResourceManager.GetString("SettingsNickName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Settings.
+        /// </summary>
+        public static string SettingsTitle {
+            get {
+                return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Sign IN.
         /// </summary>
         public static string SignInButton {
@@ -318,6 +372,15 @@ namespace ProfileBook.Resources {
         public static string SignUpTitle {
             get {
                 return ResourceManager.GetString("SignUpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sort by:.
+        /// </summary>
+        public static string SortBy {
+            get {
+                return ResourceManager.GetString("SortBy", resourceCulture);
             }
         }
         

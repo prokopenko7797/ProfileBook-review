@@ -6,8 +6,8 @@ namespace ProfileBook.Enums
 {
     public enum SortEnum
     {
-        name,
         nick_name,
+        name,
         date
     }
 }

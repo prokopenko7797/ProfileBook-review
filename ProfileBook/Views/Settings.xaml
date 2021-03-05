@@ -4,7 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProfileBook.Views.Settings"
-             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+             Title="{Binding Resources[SettingsTitle]}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_save.png"
@@ -18,37 +19,40 @@
     <Grid HorizontalOptions="Center"  VerticalOptions="CenterAndExpand">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*" />
-            <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
             <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
 
 
-        <StackLayout Grid.Row="0" RadioButtonGroup.GroupName="SortBy" RadioButtonGroup.SelectedValue="{Binding Selection}">
-            <Label Text="Sort by:"/>
-            <RadioButton Content="Nickname" Value="1"/>
-            <RadioButton Content="Name" Value="2"/>
-            <RadioButton Content="Date" Value="3"/>
+        <StackLayout Grid.Row="0" RadioButtonGroup.GroupName="SortBy" RadioButtonGroup.SelectedValue="{Binding SelectedSort}">
+            <Label Text="{Binding Resources[SortBy]}" FontAttributes="Bold"/>
+            <RadioButton Content="{Binding Resources[SettingsNickName]}" Value="0" IsChecked="{Binding IsCheckedNickName}"/>
+            <RadioButton Content="{Binding Resources[SettingsName]}" Value="1" IsChecked="{Binding IsCheckedName}"/>
+            <RadioButton Content="{Binding Resources[SettingsDate]}" Value="2" IsChecked="{Binding IsCheckedDate}"/>
         </StackLayout>
 
-        <Label Grid.Row="1" Text="{Binding Resources[MainList]}"></Label>
 
-        <Label Grid.Row="2"  Text="Select Language"  />
+        
+        <StackLayout Grid.Row="1" RadioButtonGroup.GroupName="Lang" RadioButtonGroup.SelectedValue="{Binding SelectedLang}">
+            <Label Text="{Binding Resources[SelectLang]}"  FontAttributes="Bold" />
+            <RadioButton Content="English" Value="en-US" IsChecked="{Binding IsCheckedEn}"/>
+            <RadioButton Content="Русский" Value="ru" IsChecked="{Binding IsCheckedRu}"/>
+
+        </StackLayout>
 
 
 
 
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.7*"/>
-            </Grid.ColumnDefinitions>
+
+        <Label Text="{Binding Resources[DarkTheme]}" Grid.Column="0" Grid.Row="2" FontAttributes="Bold"/>
+        <Switch Grid.Column="1" Grid.Row="2" IsToggled="{Binding IsChecked}" HorizontalOptions="Start"  VerticalOptions="Start" ></Switch>
             
-            <Label Text="Dark theme:" Grid.Column="0"></Label>
-            <Switch Grid.Column="1" IsToggled="{Binding IsChecked}"></Switch>
-            <Label Grid.Row="2"  Text="{Binding Theme}"></Label>
-        </Grid>
+
         
 
     </Grid>

@@ -192,6 +192,18 @@
   <data name="PasVal1" xml:space="preserve">
     <value>Пароль должен быть хотя бы</value>
   </data>
+  <data name="SettingsDate" xml:space="preserve">
+    <value>Дате</value>
+  </data>
+  <data name="SettingsName" xml:space="preserve">
+    <value>Имени</value>
+  </data>
+  <data name="SettingsNickName" xml:space="preserve">
+    <value>Нику</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
   <data name="SignInButton" xml:space="preserve">
     <value>Войти</value>
   </data>
@@ -203,6 +215,9 @@
   </data>
   <data name="SignUpTitle" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Сортировка по:</value>
   </data>
   <data name="StartNum" xml:space="preserve">
     <value>Логин не должен начинатся с цифры.</value>
