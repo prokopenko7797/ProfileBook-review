@@ -50,6 +50,8 @@ namespace ProfileBook.ViewModels
 
             ImagePath = Constant.DefaultProfileImage;
 
+
+            
         }
 
 
@@ -183,9 +185,10 @@ namespace ProfileBook.ViewModels
                 Description = _profile.description;
                 ImagePath = _profile.image_path;
 
-                Title = Resources["EditProfilePage"];
+                Title = Resources["EditProfileTitle"];
             }
-            else Title = Resources["AddProfilePage"];
+            else Title = Resources["AddProfileTitle"];
+
         }
 
 
