@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using ProfileBook.Models;
+using ProfileBook.Servcies.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,8 @@ namespace ProfileBook.ViewModels
 
         
 
-        public ProfileImageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public ProfileImageViewModel(INavigationService navigationService, ISettingsManager settingsManager)
+            : base(navigationService, settingsManager)
         {
         }
 

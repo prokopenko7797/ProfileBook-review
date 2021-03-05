@@ -17,11 +17,11 @@ namespace ProfileBook.ViewModels
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
-        
-       
+        protected ISettingsManager _settingsManager { get; private set; }
 
 
-        private string _title;
+
+    private string _title;
 
         public string Title
         {
@@ -38,15 +38,14 @@ namespace ProfileBook.ViewModels
             private set;
         }
 
-        // &&&&&&&&&77
-        private readonly ISettingsManager settingsManager = new SettingsManager();
-        // ???????????
 
 
-        public ViewModelBase(INavigationService navigationService)
+
+        public ViewModelBase(INavigationService navigationService, ISettingsManager settingsManager)
         {
             NavigationService = navigationService;
-            Resources = new LocalizedResources(typeof(LocalizationResource), settingsManager.Lang);
+            _settingsManager = settingsManager;
+            Resources = new LocalizedResources(typeof(LocalizationResource), _settingsManager.Lang);
         }
 
 

@@ -7,7 +7,7 @@
              BackgroundColor="Transparent">
     
     <ContentPage.Content>
-        <Grid BackgroundColor="Transparent">
+        <Grid BackgroundColor="#77acacac">
             <Image Source="{Binding ImagePath}" HorizontalOptions="Center"  VerticalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}"/>

@@ -42,9 +42,9 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        public AddEditProfileViewModel(INavigationService navigationService, IProfileService profileService,
+        public AddEditProfileViewModel(INavigationService navigationService, ISettingsManager settingsManager, IProfileService profileService,
             IMedia media, IUserDialogs userDialogs, IAuthorizationService authorizationService)
-            : base(navigationService)
+            : base(navigationService, settingsManager)
         {
             
             _profileService = profileService;

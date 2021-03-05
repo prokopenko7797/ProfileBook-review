@@ -45,9 +45,9 @@ namespace ProfileBook.ViewModels
 
         #endregion
 
-        public MainListViewModel(INavigationService navigationService, IProfileService profileService,
+        public MainListViewModel(INavigationService navigationService, ISettingsManager settingsManager, IProfileService profileService,
             IAuthorizationService authorizationService)
-            : base(navigationService)
+            : base(navigationService, settingsManager)
         {
             _authorizationService = authorizationService;
             _profileService = profileService;

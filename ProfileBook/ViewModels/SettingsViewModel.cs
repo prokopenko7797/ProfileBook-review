@@ -19,11 +19,7 @@ namespace ProfileBook.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
-        #region _____Services
 
-        private readonly ISettingsManager _settingsManager;
-
-        #endregion
 
         #region ____Private_____
 
@@ -47,10 +43,8 @@ namespace ProfileBook.ViewModels
         #endregion
 
         public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager)
-            : base(navigationService)
+            : base(navigationService, settingsManager)
         {
-            _settingsManager = settingsManager;
-
 
             Theme = (int)Application.Current.RequestedTheme;
 
@@ -206,19 +200,11 @@ namespace ProfileBook.ViewModels
             {
                 if (IsChecked == true)
                 {
-                    ChangeLang(ResourcesLangConst.ru);
-
-                    Lang = ResourcesLangConst.ru;
-
                     appTheme = OSAppTheme.Dark;
                     Application.Current.UserAppTheme = OSAppTheme.Dark;
                 }
                 else
-                {
-                    ChangeLang(ResourcesLangConst.en);
-
-                    Lang = ResourcesLangConst.en;
-
+                { 
                     appTheme = OSAppTheme.Unspecified;
                     Application.Current.UserAppTheme = OSAppTheme.Unspecified;
                 }

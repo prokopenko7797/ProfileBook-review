@@ -39,8 +39,8 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        public SignInViewModel(INavigationService navigationService, IPageDialogService pageDialogService,
-        IAuthorizationService authorization): base(navigationService)
+        public SignInViewModel(INavigationService navigationService, ISettingsManager settingsManager, IPageDialogService pageDialogService,
+        IAuthorizationService authorization): base(navigationService, settingsManager)
         {
 
             _pageDialogService = pageDialogService;
