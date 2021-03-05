@@ -1,8 +1,4 @@
 ﻿using ProfileBook.Constants;
-using ProfileBook.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 
 namespace ProfileBook.Servcies.Settings

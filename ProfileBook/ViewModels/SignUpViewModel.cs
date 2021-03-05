@@ -1,9 +1,7 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 using System.ComponentModel;
-using ProfileBook.Enums;
 using ProfileBook.Servcies.Registration;
 using ProfileBook.Views;
 using ProfileBook.Constants;

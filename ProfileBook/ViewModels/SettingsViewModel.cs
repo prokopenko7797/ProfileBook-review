@@ -1,18 +1,11 @@
-﻿using Acr.UserDialogs;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Commands;
 using Prism.Navigation;
 using ProfileBook.Constants;
 using ProfileBook.Enums;
 using ProfileBook.Localization;
-using ProfileBook.Resources;
 using ProfileBook.Servcies.Settings;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
+
 using Xamarin.Forms;
 
 namespace ProfileBook.ViewModels
@@ -35,8 +28,8 @@ namespace ProfileBook.ViewModels
         private bool _IsCheckedName;
         private bool _IsCheckedNickName;
         private bool _IsCheckedDate;
-        private int _Theme;
-        private string _Lang;
+
+
 
 
 
@@ -45,9 +38,6 @@ namespace ProfileBook.ViewModels
         public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager)
             : base(navigationService, settingsManager)
         {
-
-            Theme = (int)Application.Current.RequestedTheme;
-
         }
 
 
@@ -102,17 +92,10 @@ namespace ProfileBook.ViewModels
             set { SetProperty(ref _IsCheckedDate, value); }
         }
 
-        public int Theme
-        {
-            get { return _Theme; }
-            set { SetProperty(ref _Theme, value); }
-        }
 
-        public string Lang
-        {
-            get { return _Lang; }
-            set { SetProperty(ref _Lang, value); }
-        }
+
+    
+
 
         #endregion
 
@@ -181,11 +164,10 @@ namespace ProfileBook.ViewModels
 
 
 
-            Theme = _settingsManager.Theme;
+
 
 
             appTheme = (OSAppTheme)_settingsManager.Theme;
-            Lang = _settingsManager.Lang;
 
             if (_settingsManager.Theme == (int)OSAppTheme.Unspecified)
                 IsChecked = false;
@@ -215,7 +197,6 @@ namespace ProfileBook.ViewModels
 
                 ChangeLang(SelectedLang);
 
-                Lang = SelectedLang;
             }
 
         }

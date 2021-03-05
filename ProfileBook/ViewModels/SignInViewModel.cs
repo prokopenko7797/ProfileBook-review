@@ -1,11 +1,5 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ProfileBook.Models;
-using ProfileBook.Servcies;
 using ProfileBook.Servcies.Settings;
 using ProfileBook.Servcies.Authorization;
 using System.ComponentModel;

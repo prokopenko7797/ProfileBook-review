@@ -1,16 +1,9 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using ProfileBook.Constants;
 using ProfileBook.Localization;
 using ProfileBook.Resources;
 using ProfileBook.Servcies.Settings;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Xamarin.Essentials;
+
 
 namespace ProfileBook.ViewModels
 {
@@ -18,18 +11,6 @@ namespace ProfileBook.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
         protected ISettingsManager _settingsManager { get; private set; }
-
-
-
-    private string _title;
-
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
-
-
 
 
         public LocalizedResources Resources

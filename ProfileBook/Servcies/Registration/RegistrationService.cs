@@ -1,11 +1,5 @@
-﻿using ProfileBook.Constants;
-using ProfileBook.Enums;
-using ProfileBook.Models;
+﻿using ProfileBook.Models;
 using ProfileBook.Servcies.Repository;
-using ProfileBook.Validators;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProfileBook.Servcies.Registration

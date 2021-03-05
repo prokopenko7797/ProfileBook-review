@@ -1,13 +1,8 @@
-﻿using Plugin.Media;
-using Plugin.Media.Abstractions;
+﻿using Plugin.Media.Abstractions;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using Prism.Services;
 using ProfileBook.Models;
 using ProfileBook.Servcies.ProfileService;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 using System;
 using Acr.UserDialogs;
 using ProfileBook.Servcies.Settings;
@@ -20,6 +15,7 @@ namespace ProfileBook.ViewModels
     {
         #region ______Private______
 
+        private string _Title;
         private string _NickName;
         private string _Name;
         private string _ImagePath;
@@ -46,7 +42,7 @@ namespace ProfileBook.ViewModels
             IMedia media, IUserDialogs userDialogs, IAuthorizationService authorizationService)
             : base(navigationService, settingsManager)
         {
-            
+
             _profileService = profileService;
             _userDialogs = userDialogs;
             _media = media;
@@ -58,6 +54,12 @@ namespace ProfileBook.ViewModels
 
 
         #region ____Public Properties_____
+
+        public string Title
+        {
+            get { return _Title; }
+            set { SetProperty(ref _Title, value); }
+        }
 
         public string NickName
         {
@@ -87,9 +89,9 @@ namespace ProfileBook.ViewModels
 
         #region ______Comands_____
 
-        public DelegateCommand SaveToolBarCommand =>
-           _SaveToolBarCommand ??
-           (_SaveToolBarCommand = new DelegateCommand(ExecuteSaveToolBarCommand));
+        public DelegateCommand SaveToolBarCommand => 
+            _SaveToolBarCommand ??
+            (_SaveToolBarCommand = new DelegateCommand(ExecuteSaveToolBarCommand));
 
         public DelegateCommand ImageTapCommand =>
             _ImageTapCommand ??
@@ -120,10 +122,9 @@ namespace ProfileBook.ViewModels
 
                 await _profileService.AddEdit(_profile);
 
-                await NavigationService.GoBackAsync();
+                
             }
-
-            else await _userDialogs.AlertAsync(Resources["NickNameEmpty"], Resources["Error"], Resources["Ok"]);
+            await NavigationService.GoBackAsync();
         }
 
 
