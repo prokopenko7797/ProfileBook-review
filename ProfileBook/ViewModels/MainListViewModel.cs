@@ -107,7 +107,6 @@ namespace ProfileBook.ViewModels
             if (result)
             {
                 await _profileService.Dalete(profile.id);
-                //UpdateCollection();
                 ProfileList.Remove(profile);
             }
         }
@@ -117,12 +116,12 @@ namespace ProfileBook.ViewModels
         {
             Profile profile = sender as Profile;
 
-            var p = new NavigationParameters
+            var parametrs = new NavigationParameters
             {
                 { nameof(Profile), profile }
             };
 
-            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}", p);
+            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}", parametrs);
         }
 
 

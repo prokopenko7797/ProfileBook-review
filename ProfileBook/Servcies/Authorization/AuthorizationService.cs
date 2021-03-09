@@ -19,6 +19,9 @@ namespace ProfileBook.Servcies.Authorization
             _repository = repository;
             _settingsManager = settingsManager;
         }
+
+        #region ______Public Methods______
+
         public async Task<bool> Authorize(string login, string password)
         {
 
@@ -49,5 +52,7 @@ namespace ProfileBook.Servcies.Authorization
             get => Preferences.Get(nameof(IdUser), Constant.NonAuthorized);
             set => Preferences.Set(nameof(IdUser), value);
         }
+
+        #endregion
     }
 }

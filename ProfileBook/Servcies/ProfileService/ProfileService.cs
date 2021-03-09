@@ -26,7 +26,7 @@ namespace ProfileBook.Servcies.ProfileService
             _authorizationService = authorizationService;
         }
 
-
+        #region ______Public Methods______
         public async Task<bool> AddEdit(Profile profile)
         {
             if (profile.id != default)
@@ -83,5 +83,6 @@ namespace ProfileBook.Servcies.ProfileService
 
             return p;
         }
+        #endregion
     }
 }

@@ -16,7 +16,7 @@ namespace ProfileBook.Servcies.Registration
         }
 
 
-
+        #region ______Public Methods______
         public async Task<bool>  Registrate(string login, string password)
         {
             
@@ -31,5 +31,7 @@ namespace ProfileBook.Servcies.Registration
             await _repository.Insert(new User { Login = login, Password = password });
             return true;
         }
+
+        #endregion
     }
 }

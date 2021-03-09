@@ -5,7 +5,7 @@ namespace ProfileBook.Servcies.Settings
 {
     public class SettingsManager: ISettingsManager
     {
-
+        #region ______Public Methods______
         public int SortBy
         {
             get => Preferences.Get(nameof(SortBy), Constant.DefaultSort);
@@ -23,5 +23,6 @@ namespace ProfileBook.Servcies.Settings
             get => Preferences.Get(nameof(Theme), Constant.DefaultTheme);
             set => Preferences.Set(nameof(Theme), value);
         }
+        #endregion
     }
 }

@@ -21,6 +21,7 @@ namespace ProfileBook.Servcies.Repository
             _database.CreateTableAsync<T>();
         }
 
+        #region ______Public Methods______
         public async Task<List<T>> GetAll()
         {
             return await _database.Table<T>().ToListAsync();
@@ -55,5 +56,6 @@ namespace ProfileBook.Servcies.Repository
         {
             return await _database.FindWithQueryAsync<T>(query);
         }
+        #endregion
     }
 }
