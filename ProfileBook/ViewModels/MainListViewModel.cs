@@ -108,6 +108,7 @@ namespace ProfileBook.ViewModels
             {
                 await _profileService.Dalete(profile.id);
                 ProfileList.Remove(profile);
+                if (ProfileList.Count() == 0) IsVisible = true;
             }
         }
 
