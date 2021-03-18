@@ -13,12 +13,32 @@ namespace ProfileBook.Servcies.Localization
     {
        
 
-        readonly ResourceManager ResourceManager;
+        #region _____Services______
 
         private readonly ISettingsManager _settingsManager;
 
+        #endregion
 
-        CultureInfo CurrentCultureInfo;
+        #region _____Private______
+
+        private readonly ResourceManager ResourceManager;
+        private CultureInfo CurrentCultureInfo;
+
+        #endregion
+
+        public LocalizationService(ISettingsManager settingsManager)
+        {
+            _settingsManager = settingsManager;
+
+
+            CurrentCultureInfo = new CultureInfo(_settingsManager.Lang);
+            ResourceManager = new ResourceManager(typeof(LocalizationResource));
+
+            MessagingCenter.Subscribe<object, CultureInfo>(this,
+                string.Empty, OnCultureChanged);
+        }
+
+        #region _____Public Methods______
 
         public string this[string key]
         {
@@ -29,21 +49,15 @@ namespace ProfileBook.Servcies.Localization
         }
 
 
-        public LocalizationService(ISettingsManager settingsManager) 
+        public void CultureChange(string lang)
         {
-            _settingsManager = settingsManager;
-   
 
-            CurrentCultureInfo = new CultureInfo( _settingsManager.Lang);
-            ResourceManager = new ResourceManager(typeof(LocalizationResource));
-
-            MessagingCenter.Subscribe<object, CultureInfo>(this,
-                string.Empty, OnCultureChanged);
+            MessagingCenter.Send<object, CultureInfo>(this, string.Empty, new CultureInfo(lang));
         }
 
+        #endregion
 
-
-        
+        #region _____Private Helpers______
 
         private void OnCultureChanged(object s, CultureInfo ci)
         {
@@ -51,11 +65,7 @@ namespace ProfileBook.Servcies.Localization
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Item"));
         }
 
-        public void CultureChange(string lang)
-        {
-
-            MessagingCenter.Send<object, CultureInfo>(this, string.Empty, new CultureInfo(lang));
-        }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

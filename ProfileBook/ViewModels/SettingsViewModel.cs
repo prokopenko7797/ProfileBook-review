@@ -126,10 +126,7 @@ namespace ProfileBook.ViewModels
         }
 
 
-        private void ChangeLang(string lang) 
-        {
-            MessagingCenter.Send<object, CultureInfo>(this, string.Empty, new CultureInfo(lang));
-        }
+
 
 
         #endregion
@@ -194,8 +191,7 @@ namespace ProfileBook.ViewModels
             if (args.PropertyName == nameof(SelectedLang))
             {
 
-                ChangeLang(SelectedLang);
-
+                Resources.CultureChange(SelectedLang);
             }
 
         }
@@ -206,8 +202,7 @@ namespace ProfileBook.ViewModels
             base.OnNavigatedFrom(parameters);
 
             Application.Current.UserAppTheme = (OSAppTheme)_settingsManager.Theme;
-
-            ChangeLang(_settingsManager.Lang);
+            Resources.CultureChange(_settingsManager.Lang);
         }
 
         #endregion
