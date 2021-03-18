@@ -115,6 +115,7 @@ namespace ProfileBook.ViewModels
             if (_profile.name != Name || _profile.nick_name != NickName
                     || _profile.image_path != ImagePath || _profile.description != Description)
             {
+
                 _profile.name = Name;
                 _profile.nick_name = NickName;
                 _profile.description = Description;
@@ -123,6 +124,8 @@ namespace ProfileBook.ViewModels
                 _profile.date = DateTime.Now;
 
                 
+                
+
                 if (_profile.id == default)
                 {
                     await _profileService.AddAsync(_profile);

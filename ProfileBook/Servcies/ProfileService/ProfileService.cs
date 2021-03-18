@@ -61,6 +61,8 @@ namespace ProfileBook.Servcies.ProfileService
         {
             IEnumerable<Profile> p = await GetUserProfilesAsync();
 
+            p = p.OrderBy(Profile => _settingsManager.SortBy);
+
             switch (_settingsManager.SortBy)
             {
                 case (int)SortEnum.date:

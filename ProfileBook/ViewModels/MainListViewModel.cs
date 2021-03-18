@@ -122,7 +122,7 @@ namespace ProfileBook.ViewModels
                 { nameof(Profile), profile }
             };
 
-            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}", parametrs);
+            await NavigationService.NavigateAsync(nameof(AddEditProfile), parametrs);
         }
 
 
@@ -134,20 +134,20 @@ namespace ProfileBook.ViewModels
             {
                 { nameof(Profile.image_path), profile.image_path }
             };
-            await NavigationService.NavigateAsync($"{nameof(ProfileImage)}", p, true, true);
+            await NavigationService.NavigateAsync(nameof(ProfileImage), p, true, true);
         }
 
 
         private async void NavigateAddEditProfileCommand()
         {
-            await NavigationService.NavigateAsync($"{nameof(AddEditProfile)}");
+            await NavigationService.NavigateAsync(nameof(AddEditProfile));
 
         }
 
 
         private async void NavigateSettingsCommand()
         {
-            await NavigationService.NavigateAsync($"{nameof(Settings)}");
+            await NavigationService.NavigateAsync(nameof(Settings));
         }
 
 

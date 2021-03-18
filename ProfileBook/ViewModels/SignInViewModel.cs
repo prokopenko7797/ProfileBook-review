@@ -89,7 +89,7 @@ namespace ProfileBook.ViewModels
 
         private async void ExecuteNavigateSignUpCommand()
         {
-            await NavigationService.NavigateAsync($"{nameof(SignUp)}");
+            await NavigationService.NavigateAsync(nameof(SignUp));
 
         }
 
