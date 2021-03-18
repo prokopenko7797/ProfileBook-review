@@ -7,6 +7,7 @@ using Prism.Services;
 using ProfileBook.Views;
 using Xamarin.Forms;
 using ProfileBook.Constants;
+using ProfileBook.Servcies.Localization;
 
 namespace ProfileBook.ViewModels
 {
@@ -34,8 +35,9 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        public SignInViewModel(INavigationService navigationService, ISettingsManager settingsManager, IPageDialogService pageDialogService,
-        IAuthorizationService authorization): base(navigationService, settingsManager)
+        public SignInViewModel(INavigationService navigationService, ILocalizationService localizationService, 
+            IPageDialogService pageDialogService, IAuthorizationService authorization)
+            : base(navigationService, localizationService)
         {
 
             _pageDialogService = pageDialogService;

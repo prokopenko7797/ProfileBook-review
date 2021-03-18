@@ -2,6 +2,7 @@
 using Prism.Navigation;
 using ProfileBook.Models;
 using ProfileBook.Servcies.Authorization;
+using ProfileBook.Servcies.Localization;
 using ProfileBook.Servcies.ProfileService;
 using ProfileBook.Servcies.Settings;
 using ProfileBook.Views;
@@ -38,9 +39,9 @@ namespace ProfileBook.ViewModels
 
         #endregion
 
-        public MainListViewModel(INavigationService navigationService, ISettingsManager settingsManager, IProfileService profileService,
+        public MainListViewModel(INavigationService navigationService, ILocalizationService localizationService, IProfileService profileService,
             IAuthorizationService authorizationService)
-            : base(navigationService, settingsManager)
+            : base(navigationService, localizationService)
         {
             _authorizationService = authorizationService;
             _profileService = profileService;

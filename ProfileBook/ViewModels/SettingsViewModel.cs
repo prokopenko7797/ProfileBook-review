@@ -2,16 +2,18 @@
 using Prism.Navigation;
 using ProfileBook.Constants;
 using ProfileBook.Enums;
-using ProfileBook.Localization;
+using ProfileBook.Servcies.Localization;
 using ProfileBook.Servcies.Settings;
 using System.ComponentModel;
-
+using System.Globalization;
 using Xamarin.Forms;
 
 namespace ProfileBook.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
+
+        ISettingsManager _settingsManager;
 
 
         #region ____Private_____
@@ -35,9 +37,11 @@ namespace ProfileBook.ViewModels
 
         #endregion
 
-        public SettingsViewModel(INavigationService navigationService, ISettingsManager settingsManager)
-            : base(navigationService, settingsManager)
+        public SettingsViewModel(INavigationService navigationService, ILocalizationService localizationService, 
+            ISettingsManager settingsManager)
+            : base(navigationService, localizationService)
         {
+            _settingsManager = settingsManager;
         }
 
 
@@ -124,7 +128,7 @@ namespace ProfileBook.ViewModels
 
         private void ChangeLang(string lang) 
         {
-            MessagingCenter.Send<object, CultureChangedMessage>(this, string.Empty, new CultureChangedMessage(lang));
+            MessagingCenter.Send<object, CultureInfo>(this, string.Empty, new CultureInfo(lang));
         }
 
 

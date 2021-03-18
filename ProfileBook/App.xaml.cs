@@ -18,6 +18,7 @@ using Acr.UserDialogs;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using ProfileBook.Constants;
+using ProfileBook.Servcies.Localization;
 
 namespace ProfileBook
 {
@@ -62,6 +63,7 @@ namespace ProfileBook
             containerRegistry.RegisterInstance<IAuthorizationService>(Container.Resolve<AuthorizationService>());
             containerRegistry.RegisterInstance<IRegistrationService>(Container.Resolve<RegistrationService>());
             containerRegistry.RegisterInstance<IProfileService>(Container.Resolve<ProfileService>());
+            containerRegistry.RegisterInstance<ILocalizationService>(Container.Resolve<LocalizationService>());
 
 
             containerRegistry.RegisterInstance(UserDialogs.Instance);

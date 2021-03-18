@@ -1,5 +1,6 @@
 ﻿using Prism.Navigation;
 using ProfileBook.Models;
+using ProfileBook.Servcies.Localization;
 using ProfileBook.Servcies.Settings;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -13,8 +14,8 @@ namespace ProfileBook.ViewModels
 
         
 
-        public ProfileImageViewModel(INavigationService navigationService, ISettingsManager settingsManager)
-            : base(navigationService, settingsManager)
+        public ProfileImageViewModel(INavigationService navigationService, ILocalizationService localizationService)
+            : base(navigationService, localizationService)
         {
         }
 

@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using ProfileBook.Validators;
 using System.Threading.Tasks;
 using ProfileBook.Servcies.Settings;
+using ProfileBook.Servcies.Localization;
 
 namespace ProfileBook.ViewModels
 {
@@ -34,9 +35,9 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        public SignUpViewModel(INavigationService navigationService, ISettingsManager settingsManager, IPageDialogService pageDialogService, 
+        public SignUpViewModel(INavigationService navigationService, ILocalizationService localizationService, IPageDialogService pageDialogService, 
             IRegistrationService registrationService)
-            : base(navigationService, settingsManager)
+            : base(navigationService, localizationService)
         {
 
             _pageDialogService = pageDialogService;

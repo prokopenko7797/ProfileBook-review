@@ -8,6 +8,7 @@ using Acr.UserDialogs;
 using ProfileBook.Servcies.Settings;
 using ProfileBook.Constants;
 using ProfileBook.Servcies.Authorization;
+using ProfileBook.Servcies.Localization;
 
 namespace ProfileBook.ViewModels
 {
@@ -38,9 +39,9 @@ namespace ProfileBook.ViewModels
         #endregion
 
 
-        public AddEditProfileViewModel(INavigationService navigationService, ISettingsManager settingsManager, IProfileService profileService,
+        public AddEditProfileViewModel(INavigationService navigationService, ILocalizationService localizationService, IProfileService profileService,
             IMedia media, IUserDialogs userDialogs, IAuthorizationService authorizationService)
-            : base(navigationService, settingsManager)
+            : base(navigationService, localizationService)
         {
 
             _profileService = profileService;

@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
-using ProfileBook.Localization;
 using ProfileBook.Resources;
+using ProfileBook.Servcies.Localization;
 using ProfileBook.Servcies.Settings;
 
 
@@ -10,10 +10,10 @@ namespace ProfileBook.ViewModels
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
-        protected ISettingsManager _settingsManager { get; private set; }
 
 
-        public LocalizedResources Resources
+
+        public ILocalizationService Resources
         {
             get;
             private set;
@@ -22,11 +22,10 @@ namespace ProfileBook.ViewModels
 
 
 
-        public ViewModelBase(INavigationService navigationService, ISettingsManager settingsManager)
+        public ViewModelBase(INavigationService navigationService, ILocalizationService localizationService)
         {
             NavigationService = navigationService;
-            _settingsManager = settingsManager;
-            Resources = new LocalizedResources(typeof(LocalizationResource), _settingsManager.Lang);
+            Resources = localizationService;
         }
 
 
