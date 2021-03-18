@@ -8,11 +8,14 @@ namespace ProfileBook.Servcies.ProfileService
 {
     public interface IProfileService
     {
-        Task<bool> Dalete(int id);
-        Task<bool> AddEdit(Profile profile);
-        Task<Profile> GetProfile(int id);
-        Task<IEnumerable<Profile>> GetUserProfiles();
-        Task<IEnumerable<Profile>> GetUserSortedProfiles();
+        Task<bool> DeleteAsync(int id);
+        Task<bool> AddAsync(Profile profile);
+
+        Task<bool> EditAsync(Profile profile);
+
+        Task<Profile> GetProfileAsync(int id);
+        Task<IEnumerable<Profile>> GetUserProfilesAsync();
+        Task<IEnumerable<Profile>> GetUserSortedProfilesAsync();
 
 
     }

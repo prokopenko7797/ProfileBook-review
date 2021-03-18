@@ -6,16 +6,16 @@ using ProfileBook.Models;
 
 namespace ProfileBook.Servcies.Repository
 {
-    public interface IRepository<T> where T : IEntityModel, new()
+    public interface IRepository
     {
-        Task<List<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync<T>() where T : IEntityModel, new();
 
-        Task<T> FindWithQuery(string query);
+        Task<T> FindWithQueryAsync<T>(string query) where T : IEntityModel, new();
 
-        Task<List<T>> Query(string query);
-        Task<T> GetById(int id);
-        Task<int> Delete(int id);
-        Task<int> Insert(T item);
-        Task<int> Update(T item);
+        Task<IEnumerable<T>> QueryAsync<T>(string query) where T : IEntityModel, new();
+        Task<T> GetByIdAsync<T>(int id) where T : IEntityModel, new();
+        Task<int> DeleteAsync<T>(int id) where T : IEntityModel, new();
+        Task<int> InsertAsync<T>(T item) where T : IEntityModel, new();
+        Task<int> UpdateAsync<T>(T item) where T : IEntityModel, new();
     }
 }

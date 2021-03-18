@@ -106,7 +106,7 @@ namespace ProfileBook.ViewModels
             });
             if (result)
             {
-                await _profileService.Dalete(profile.id);
+                await _profileService.DeleteAsync(profile.id);
                 ProfileList.Remove(profile);
                 if (ProfileList.Count() == 0) IsVisible = true;
             }
@@ -172,12 +172,11 @@ namespace ProfileBook.ViewModels
 
         private async void UpdateCollection()
         {
-            ProfileList = new ObservableCollection<Profile>(await _profileService.GetUserSortedProfiles());
+            ProfileList = new ObservableCollection<Profile>(await _profileService.GetUserSortedProfilesAsync());
 
 
 
-            if (ProfileList.Count() != 0) IsVisible = false;
-            else IsVisible = true;
+            IsVisible = ProfileList.Count() == 0;
         }
 
         #endregion

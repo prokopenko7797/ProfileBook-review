@@ -154,18 +154,13 @@ namespace ProfileBook.ViewModels
 
             switch (_settingsManager.Lang)
             {
-                case ResourcesLangConst.en:
+                case Constant.ResourcesLangConst.en:
                     IsCheckedEn = true;
                     break;
-                case ResourcesLangConst.ru:
+                case Constant.ResourcesLangConst.ru:
                     IsCheckedRu = true;
                     break;
             }
-
-
-
-
-
 
             appTheme = (OSAppTheme)_settingsManager.Theme;
 

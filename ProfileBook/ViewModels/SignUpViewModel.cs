@@ -141,9 +141,9 @@ namespace ProfileBook.ViewModels
         {
             if(await LogPassCheck(Login, Password, ConfirmPassword))
             {
-                if (await _registrationService.Registrate(Login, Password))
+                if (await _registrationService.RegistrateAsync(Login, Password))
                 {
-                    var p = new NavigationParameters{ { "Login", Login } };
+                    var p = new NavigationParameters{ { Constant.Login, Login } };
 
                     await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignIn)}", p);
 

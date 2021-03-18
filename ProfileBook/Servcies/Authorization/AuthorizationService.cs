@@ -10,11 +10,11 @@ namespace ProfileBook.Servcies.Authorization
     public class AuthorizationService : IAuthorizationService
     {
         #region ______Services_________
-        private readonly IRepository<User> _repository;
+        private readonly IRepository _repository;
         private readonly ISettingsManager _settingsManager;
         #endregion
 
-        public AuthorizationService(IRepository<User> repository, ISettingsManager settingsManager)
+        public AuthorizationService(IRepository repository, ISettingsManager settingsManager)
         {
             _repository = repository;
             _settingsManager = settingsManager;
@@ -22,10 +22,10 @@ namespace ProfileBook.Servcies.Authorization
 
         #region ______Public Methods______
 
-        public async Task<bool> Authorize(string login, string password)
+        public async Task<bool> AuthorizeAsync(string login, string password)
         {
 
-            var user = await _repository.FindWithQuery($"SELECT * FROM {nameof(User)} WHERE login='{login}' AND password='{password}'");
+            var user = await _repository.FindWithQueryAsync<User>($"SELECT * FROM {nameof(User)} WHERE login='{login}' AND password='{password}'");
 
             if(user != null)
             {

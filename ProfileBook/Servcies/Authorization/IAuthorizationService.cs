@@ -7,7 +7,7 @@ namespace ProfileBook.Servcies.Authorization
 {
     public interface IAuthorizationService
     {
-        Task<bool> Authorize(string login, string password);
+        Task<bool> AuthorizeAsync(string login, string password);
         bool IsAuthorize();
         void LogOut();
 

@@ -8,6 +8,6 @@ namespace ProfileBook.Servcies.Registration
 {
     public interface IRegistrationService
     {
-        Task<bool> Registrate(string login, string password);
+        Task<bool> RegistrateAsync(string login, string password);
     }
 }

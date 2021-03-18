@@ -13,12 +13,12 @@ namespace ProfileBook.Servcies.ProfileService
     public class ProfileService: IProfileService
     {
         #region _____Services______
-        private readonly IRepository<Profile> _repository;
+        private readonly IRepository _repository;
         private readonly ISettingsManager _settingsManager;
         private readonly IAuthorizationService _authorizationService;
         #endregion
 
-        public ProfileService(IRepository<Profile> repository, ISettingsManager settingsManager,
+        public ProfileService(IRepository repository, ISettingsManager settingsManager,
             IAuthorizationService authorizationService)
         {
             _repository = repository;
@@ -27,42 +27,39 @@ namespace ProfileBook.Servcies.ProfileService
         }
 
         #region ______Public Methods______
-        public async Task<bool> AddEdit(Profile profile)
+        public async Task<bool> EditAsync(Profile profile)
         {
-            if (profile.id != default)
-            { 
-                if (await _repository.Update(profile) != Constant.SQLError)
-                    return true; 
-            }
-            else
-            {
-                if (await _repository.Insert(profile) != Constant.SQLError)
-                    return true;
-            }
-            return false;
+            return (await _repository.UpdateAsync(profile) != Constant.SQLError);   
         }
 
-        public async Task<bool> Dalete(int id) 
+        public async Task<bool> AddAsync(Profile profile) 
         {
-            if (await _repository.Delete(id) != Constant.SQLError)
+            return (await _repository.InsertAsync(profile) != Constant.SQLError);
+        }
+
+
+
+        public async Task<bool> DeleteAsync(int id) 
+        {
+            if (await _repository.DeleteAsync<Profile>(id) != Constant.SQLError)
                 return true;
             else return false;
         }
 
-        public async Task<Profile> GetProfile(int id)
+        public async Task<Profile> GetProfileAsync(int id)
         {
-            return await _repository.GetById(id);
+            return await _repository.GetByIdAsync<Profile>(id);
         }
 
-        public async Task<IEnumerable<Profile>> GetUserProfiles()
+        public async Task<IEnumerable<Profile>> GetUserProfilesAsync()
         {
-            return await _repository.Query($"SELECT * FROM {nameof(Profile)} " +
+            return await _repository.QueryAsync<Profile>($"SELECT * FROM {nameof(Profile)} " +
                 $"WHERE user_id='{_authorizationService.IdUser}'");
         }
 
-        public async Task<IEnumerable<Profile>> GetUserSortedProfiles()
+        public async Task<IEnumerable<Profile>> GetUserSortedProfilesAsync()
         {
-            IEnumerable<Profile> p = await GetUserProfiles();
+            IEnumerable<Profile> p = await GetUserProfilesAsync();
 
             switch (_settingsManager.SortBy)
             {

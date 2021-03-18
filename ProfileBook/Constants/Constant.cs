@@ -19,5 +19,14 @@ namespace ProfileBook.Constants
         public const int DefaultSort = (int)SortEnum.nick_name;
         public const string DefaultLanguage = ResourcesLangConst.en;
         public const int DefaultTheme = (int)OSAppTheme.Unspecified;
+        public const string Login = "Login";
+
+
+
+        public static class ResourcesLangConst
+        {
+            public const string ru = "ru";
+            public const string en = "en-US";
+        }
     }
 }

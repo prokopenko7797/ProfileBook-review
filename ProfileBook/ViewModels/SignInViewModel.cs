@@ -6,6 +6,7 @@ using System.ComponentModel;
 using Prism.Services;
 using ProfileBook.Views;
 using Xamarin.Forms;
+using ProfileBook.Constants;
 
 namespace ProfileBook.ViewModels
 {
@@ -94,12 +95,15 @@ namespace ProfileBook.ViewModels
 
         private async void ExecuteNavigateMainViewCommand()
         {
-            if (await _authorization.Authorize(Login, Password))
+            if (await _authorization.AuthorizeAsync(Login, Password))
+            {
                 await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainList)}");
-
+            }
             else
+            {
                 await _pageDialogService.DisplayAlertAsync(
                         Resources["Error"], Resources["IncorrectLogPas"], Resources["Ok"]);
+            }
         }
 
         #endregion
@@ -111,10 +115,11 @@ namespace ProfileBook.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if(parameters.GetValue<string>("Login") != null)
-                 Login = parameters.GetValue<string>("Login");
-
-            Password = "";
+            if (parameters.GetValue<string>(Constant.Login) != null)
+            {
+                Login = parameters.GetValue<string>(Constant.Login);
+            }
+            Password = string.Empty;
 
         }
 

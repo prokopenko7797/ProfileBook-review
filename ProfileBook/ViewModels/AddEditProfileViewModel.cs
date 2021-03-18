@@ -93,7 +93,7 @@ namespace ProfileBook.ViewModels
 
         public DelegateCommand SaveToolBarCommand => 
             _SaveToolBarCommand ??
-            (_SaveToolBarCommand = new DelegateCommand(ExecuteSaveToolBarCommand));
+            (_SaveToolBarCommand = new DelegateCommand(ExecuteSaveToolBarAsync));
 
         public DelegateCommand ImageTapCommand =>
             _ImageTapCommand ??
@@ -104,7 +104,7 @@ namespace ProfileBook.ViewModels
         #region ______Private Helpers________
 
 
-        private async void ExecuteSaveToolBarCommand()
+        private async void ExecuteSaveToolBarAsync()
         {
             if (NickName == default || NickName.Length < 1)
             {
@@ -122,9 +122,18 @@ namespace ProfileBook.ViewModels
                 _profile.user_id = _authorizationService.IdUser;
                 _profile.date = DateTime.Now;
 
-                await _profileService.AddEdit(_profile);
-
                 
+                if (_profile.id == default)
+                {
+                    await _profileService.AddAsync(_profile);
+                }
+                else
+                {
+                    await _profileService.EditAsync(_profile);
+                }
+                
+
+
             }
             await NavigationService.GoBackAsync();
         }

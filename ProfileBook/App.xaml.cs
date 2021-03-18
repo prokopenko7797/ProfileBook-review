@@ -57,8 +57,7 @@ namespace ProfileBook
         {
             
 
-            containerRegistry.RegisterInstance<IRepository<User>>(Container.Resolve<Repository<User>>());
-            containerRegistry.RegisterInstance<IRepository<Profile>>(Container.Resolve<Repository<Profile>>());
+            containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
             containerRegistry.RegisterInstance<ISettingsManager>(Container.Resolve <SettingsManager>());
             containerRegistry.RegisterInstance<IAuthorizationService>(Container.Resolve<AuthorizationService>());
             containerRegistry.RegisterInstance<IRegistrationService>(Container.Resolve<RegistrationService>());

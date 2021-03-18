@@ -21,7 +21,9 @@ namespace ProfileBook.Validators
 
         public static bool InRange(string str, int min, int max)
         {
-            return str.Length >= min  && str.Length <= max;
+            var inRange = new Regex($@"^(.{{{min}}}|.{{{max}}})$");
+
+            return inRange.IsMatch(str);
         }
 
         public static bool StartWithNumeral(string str)
